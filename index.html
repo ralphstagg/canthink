@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Can't Think</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14171B;
+    --bg-raised:#1D2127;
+    --ink:#EDEAE2;
+    --ink-soft:#A9ACA6;
+    --ember:#C1543A;
+    --ember-soft:#3A2620;
+    --sage:#7B9683;
+    --sage-soft:#212B25;
+    --line:#2C3138;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Karla', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2{font-family:'Fraunces', serif; margin:0; color:var(--ink);}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+
+  /* HERO */
+  .hero{padding:110px 24px 90px; border-bottom:1px solid var(--line);}
+  .hero .wrap{text-align:left;}
+  .mark{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--ember);
+    letter-spacing:.01em;
+    margin-bottom:48px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 3.6rem);
+    font-weight:600;
+    line-height:1.1;
+    max-width:16ch;
+    margin-bottom:28px;
+  }
+  .hero .manifesto{
+    font-size:1.1rem;
+    color:#CFCCC3;
+    max-width:56ch;
+  }
+  .hero .manifesto strong{color:var(--ink); font-weight:600;}
+
+  /* SECTION: THE PROBLEM */
+  .section{padding:64px 24px; border-bottom:1px solid var(--line);}
+  .section h2{font-size:1.5rem; font-weight:600; margin-bottom:18px; max-width:26ch;}
+  .section p{max-width:58ch; color:#CFCCC3; font-size:1.02rem;}
+
+  /* SUBSECTIONS */
+  .subsections{padding:64px 24px 110px;}
+  .subsections .eyebrow{
+    font-size:.8rem; font-weight:700; color:var(--ink-soft);
+    text-transform:none; letter-spacing:.01em; margin-bottom:8px;
+  }
+  .subsections h2{margin-bottom:36px; font-size:1.6rem; max-width:24ch;}
+
+  .link-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:24px 26px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:border-color .15s ease, transform .1s ease;
+  }
+  .link-card:hover{border-color:var(--sage); transform:translateY(-1px);}
+  .link-card .lc-text{flex:1;}
+  .link-card .lc-title{
+    font-family:'Fraunces', serif;
+    font-size:1.25rem;
+    font-weight:600;
+    margin-bottom:6px;
+    color:var(--sage);
+  }
+  .link-card .lc-desc{font-size:.92rem; color:var(--ink-soft); max-width:44ch;}
+  .link-card .lc-arrow{
+    font-size:1.4rem;
+    color:var(--sage);
+    flex-shrink:0;
+    transition:transform .15s ease;
+  }
+  .link-card:hover .lc-arrow{transform:translateX(3px);}
+
+  footer{
+    padding:32px 24px 48px;
+    font-size:.82rem;
+    color:#5B5F58;
+    max-width:760px;
+    margin:0 auto;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="mark">Can't Think</div>
+    <h1>Some days the noise wins.</h1>
+    <p class="manifesto">Chaos, hate, ignorance, taught bias, racism, greed &mdash; there's so much of it that just sitting still to think feels impossible. And if you do dare to dwell on it, it's hard to know where to even begin making sense of it, let alone <strong>becoming a catalyst for change.</strong></p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <h2>This is a place to start anyway.</h2>
+    <p>Not with answers to everything &mdash; with small, honest starting points. Understanding before action. Clarity before certainty. A way back to thinking, one piece at a time.</p>
+  </div>
+</div>
+
+<div class="subsections">
+  <div class="wrap">
+    <div class="eyebrow">A place to begin</div>
+    <h2>Somewhere to start</h2>
+
+    <a class="link-card" href="a-path-to-understand-and-heal.html" target="_blank" rel="noopener">
+      <div class="lc-text">
+        <div class="lc-title">Learn to Love...</div>
+        <div class="lc-desc">A guide to understanding and living with chronic illness &mdash; for those carrying it, and for the people who love them.</div>
+      </div>
+      <div class="lc-arrow">&rarr;</div>
+    </a>
+  </div>
+</div>
+
+<footer class="wrap">
+  Can&rsquo;t Think &middot; canthink.net
+</footer>
+
+</body>
+</html>

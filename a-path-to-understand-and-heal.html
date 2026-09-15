@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Path to Understand and Heal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage-dark:#2E463F;
+    --sage:#5C7A6E;
+    --sage-pale:#E9EFEA;
+    --bg:#F5F4EF;
+    --plum:#8C5468;
+    --plum-pale:#F1E4E9;
+    --sand:#E4DCC9;
+    --ink:#26302B;
+    --ink-soft:#5B655F;
+    --card:#FFFFFF;
+    --line:#D9D3C4;
+    --radius-s:6px;
+    --radius-m:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Karla', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0 0 .4em 0;
+    color:var(--sage-dark);
+  }
+  p{margin:0 0 1em 0;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 80px;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(180deg, var(--sage-dark) 0%, #3C5C51 100%);
+    color:#F2F0E6;
+    padding:56px 20px 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-inner{max-width:880px;margin:0 auto;position:relative;z-index:2;}
+  .hero .eyebrow{
+    font-size:.85rem;
+    color:#B9CFC3;
+    margin-bottom:10px;
+    letter-spacing:.02em;
+  }
+  .hero h1{
+    color:#FBFAF4;
+    font-size:2.3rem;
+    max-width:14ch;
+    line-height:1.15;
+  }
+  .hero p.lede{
+    color:#D9E4DD;
+    max-width:52ch;
+    font-size:1.05rem;
+  }
+  .breath-orb{
+    position:absolute;
+    right:-60px; top:-40px;
+    width:280px; height:280px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, rgba(255,255,255,0.14), rgba(255,255,255,0) 70%);
+    animation:breathe 8s ease-in-out infinite;
+  }
+  @keyframes breathe{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .breath-orb{animation:none;}
+  }
+
+  /* NAV TABS */
+  .tabbar{
+    display:flex;
+    gap:8px;
+    margin:-28px auto 36px;
+    max-width:880px;
+    padding:0 20px;
+    position:relative;
+    z-index:3;
+    flex-wrap:wrap;
+  }
+  .tab-btn{
+    font-family:'Karla', sans-serif;
+    font-weight:700;
+    font-size:.92rem;
+    color:var(--sage-dark);
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:12px 18px;
+    border-radius:999px;
+    cursor:pointer;
+    box-shadow:0 2px 6px rgba(38,48,43,0.08);
+    transition:background .15s ease, color .15s ease, transform .1s ease;
+  }
+  .tab-btn:hover{transform:translateY(-1px);}
+  .tab-btn[aria-selected="true"]{
+    background:var(--sage-dark);
+    color:#FBFAF4;
+    border-color:var(--sage-dark);
+  }
+  .tab-btn:focus-visible{outline:3px solid var(--plum); outline-offset:2px;}
+
+  section.panel{display:none;}
+  section.panel.active{display:block; animation:fadeIn .3s ease;}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+
+  .section-intro{max-width:62ch; color:var(--ink-soft); margin-bottom:28px;}
+
+  /* CARDS */
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius-m);
+    padding:22px 24px;
+    margin-bottom:16px;
+  }
+  .card h3{font-size:1.15rem;}
+  .tag{
+    display:inline-block;
+    font-size:.72rem;
+    font-weight:700;
+    color:var(--sage-dark);
+    background:var(--sage-pale);
+    padding:3px 10px;
+    border-radius:999px;
+    margin-bottom:10px;
+  }
+  .tag.plum{color:var(--plum); background:var(--plum-pale);}
+
+  /* ENERGY PICKER */
+  .energy-picker{
+    display:flex; gap:10px; flex-wrap:wrap; margin-bottom:22px;
+  }
+  .energy-btn{
+    flex:1 1 140px;
+    border:2px solid var(--line);
+    background:var(--card);
+    border-radius:var(--radius-s);
+    padding:14px 12px;
+    text-align:left;
+    cursor:pointer;
+    font-family:'Karla',sans-serif;
+  }
+  .energy-btn .dot{
+    display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:8px;
+  }
+  .energy-btn[data-tier="flare"] .dot{background:#B4574A;}
+  .energy-btn[data-tier="okay"] .dot{background:#C99A3E;}
+  .energy-btn[data-tier="good"] .dot{background:var(--sage);}
+  .energy-btn strong{display:block; font-size:.98rem; color:var(--ink);}
+  .energy-btn span.sub{font-size:.8rem; color:var(--ink-soft);}
+  .energy-btn.selected{border-color:var(--sage-dark); background:var(--sage-pale);}
+  .energy-btn:focus-visible{outline:3px solid var(--plum); outline-offset:2px;}
+
+  .routine-list{display:none;}
+  .routine-list.active{display:block;}
+  .routine-list ul{margin:0; padding-left:20px;}
+  .routine-list li{margin-bottom:8px;}
+  .note-box{
+    background:var(--plum-pale);
+    border-left:4px solid var(--plum);
+    padding:12px 16px;
+    border-radius:var(--radius-s);
+    font-size:.92rem;
+    color:#5c3a47;
+    margin-top:16px;
+  }
+
+  /* ACCORDION */
+  .accordion-item{border:1px solid var(--line); border-radius:var(--radius-s); margin-bottom:10px; overflow:hidden; background:var(--card);}
+  .accordion-trigger{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    padding:16px 18px;
+    font-family:'Fraunces', serif;
+    font-size:1.02rem;
+    font-weight:600;
+    color:var(--sage-dark);
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+  }
+  .accordion-trigger .plus{font-family:'Karla',sans-serif; font-size:1.3rem; color:var(--plum); flex-shrink:0;}
+  .accordion-panel{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .accordion-panel-inner{padding:0 18px 18px; color:var(--ink-soft); font-size:.95rem;}
+  .accordion-item.open .accordion-panel{max-height:600px;}
+  .accordion-trigger:focus-visible{outline:3px solid var(--plum); outline-offset:-3px;}
+
+  .evidence-row{display:flex; gap:6px; margin-top:8px; flex-wrap:wrap;}
+  .evidence-pill{font-size:.7rem; font-weight:700; padding:2px 9px; border-radius:999px;}
+  .ev-strong{background:#DCEAE1; color:#2E5A44;}
+  .ev-mixed{background:#F4E7C8; color:#7A5C1E;}
+  .ev-early{background:#E9E1F1; color:#5B3E7A;}
+
+  /* VENN */
+  .venn-wrap{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius-m);
+    padding:28px 20px;
+    margin-bottom:24px;
+    text-align:center;
+  }
+  .venn-wrap svg{max-width:100%; height:auto;}
+  .venn-caption{font-size:.85rem; color:var(--ink-soft); max-width:50ch; margin:14px auto 0;}
+
+  /* LINKS */
+  .link-grid{display:grid; grid-template-columns:1fr; gap:12px;}
+  @media(min-width:600px){.link-grid{grid-template-columns:1fr 1fr;}}
+  .link-card{
+    display:block;
+    border:1px solid var(--line);
+    border-radius:var(--radius-s);
+    padding:16px 18px;
+    background:var(--card);
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .link-card:hover{border-color:var(--sage);}
+  .link-card .source{font-size:.76rem; color:var(--sage); font-weight:700; text-transform:uppercase; letter-spacing:.03em; margin-bottom:4px;}
+  .link-card .title{font-family:'Fraunces', serif; font-weight:600; font-size:1rem; color:var(--ink); margin-bottom:4px;}
+  .link-card .desc{font-size:.85rem; color:var(--ink-soft);}
+
+  footer{
+    max-width:880px; margin:40px auto 0; padding:24px 20px 0; border-top:1px solid var(--line);
+    font-size:.82rem; color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="breath-orb" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">A gentle reference, not a prescription</div>
+    <h1>A path to understand and heal</h1>
+    <p class="lede">A few ways people manage overlapping conditions like MCTD, fibromyalgia, and hypermobility &mdash; sorted by how established the evidence is, so you can weigh what fits your life.</p>
+  </div>
+</div>
+
+<div class="tabbar" role="tablist" aria-label="Sections">
+  <button class="tab-btn" role="tab" aria-selected="true" aria-controls="panel-overlap" id="tab-overlap" data-panel="panel-overlap">How they connect</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-home" id="tab-home" data-panel="panel-home">Home exercises</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-eastern" id="tab-eastern" data-panel="panel-eastern">Traditional practices</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-edge" id="tab-edge" data-panel="panel-edge">Emerging &amp; experimental</button>
+  <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-links" id="tab-links" data-panel="panel-links">Trusted reading</button>
+</div>
+
+<div class="wrap">
+
+  <!-- OVERLAP -->
+  <section class="panel active" id="panel-overlap" role="tabpanel" aria-labelledby="tab-overlap">
+    <p class="section-intro">These three conditions are separate diagnoses, but they share symptoms &mdash; which is why days can feel confusing to sort out. Here's roughly how they overlap.</p>
+
+    <div class="venn-wrap">
+      <svg viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venn diagram showing three overlapping circles for MCTD, Fibromyalgia, and EDS/hypermobility, with shared symptoms listed in the overlapping areas.">
+        <circle cx="190" cy="150" r="120" fill="#5C7A6E" fill-opacity="0.55"/>
+        <circle cx="290" cy="150" r="120" fill="#8C5468" fill-opacity="0.5"/>
+        <circle cx="240" cy="235" r="120" fill="#C99A3E" fill-opacity="0.45"/>
+
+        <text x="110" y="90" font-family="Fraunces, serif" font-weight="600" font-size="17" fill="#2E463F">MCTD</text>
+        <text x="110" y="108" font-family="Karla, sans-serif" font-size="10.5" fill="#3d4b45">Rashes, Raynaud's,</text>
+        <text x="110" y="121" font-family="Karla, sans-serif" font-size="10.5" fill="#3d4b45">organ monitoring</text>
+
+        <text x="330" y="90" font-family="Fraunces, serif" font-weight="600" font-size="17" fill="#5c2f3c">Fibromyalgia</text>
+        <text x="318" y="108" font-family="Karla, sans-serif" font-size="10.5" fill="#5c2f3c">Widespread pain,</text>
+        <text x="330" y="121" font-family="Karla, sans-serif" font-size="10.5" fill="#5c2f3c">sleep disruption</text>
+
+        <text x="207" y="300" font-family="Fraunces, serif" font-weight="600" font-size="17" fill="#6b4e18">EDS / Hypermobility</text>
+        <text x="212" y="316" font-family="Karla, sans-serif" font-size="10.5" fill="#6b4e18">Joint instability</text>
+
+        <text x="205" y="150" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="11" fill="#26302B">fatigue</text>
+        <text x="205" y="165" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="11" fill="#26302B">brain fog</text>
+
+        <text x="240" y="190" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="10.5" fill="#26302B">flare-driven</text>
+        <text x="240" y="204" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="10.5" fill="#26302B">pain sensitivity</text>
+      </svg>
+      <p class="venn-caption">Where circles overlap, symptoms genuinely look alike &mdash; which is exactly why tracking your own patterns (and a specialist who knows the overlap) matters more than guessing.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">Why it's confusing</span>
+      <h3>Same symptom, different cause</h3>
+      <p>Widespread pain and fatigue can come from an active MCTD flare (immune system attacking tissue), from fibromyalgia's amplified pain signaling, or from joint strain if hypermobility is part of the picture. The treatment for each is different &mdash; which is the whole reason a flare log and a specialist team pay off.</p>
+    </div>
+  </section>
+
+  <!-- HOME EXERCISES -->
+  <section class="panel" id="panel-home" role="tabpanel" aria-labelledby="tab-home">
+    <p class="section-intro">Pick the tier that matches today &mdash; not what you planned yesterday. Any tier is a complete session.</p>
+
+    <div class="energy-picker" role="group" aria-label="Choose today's energy level">
+      <button class="energy-btn selected" data-tier="flare" aria-pressed="true"><span class="dot"></span><strong>Flare day</strong><span class="sub">Low energy, high pain</span></button>
+      <button class="energy-btn" data-tier="okay" aria-pressed="false"><span class="dot"></span><strong>Okay day</strong><span class="sub">Moderate energy</span></button>
+      <button class="energy-btn" data-tier="good" aria-pressed="false"><span class="dot"></span><strong>Good day</strong><span class="sub">Higher energy</span></button>
+    </div>
+
+    <div class="card routine-list active" data-tier-content="flare">
+      <span class="tag plum">5 minutes &middot; lying or seated</span>
+      <h3>Flare day</h3>
+      <ul>
+        <li><strong>Diaphragmatic breathing</strong> &mdash; 2&ndash;3 min, hand on belly, longer exhale than inhale</li>
+        <li><strong>Seated ankle &amp; wrist circles</strong> &mdash; 30 sec each direction</li>
+        <li><strong>Loose band pulls</strong> &mdash; open and close arms slowly, no real resistance</li>
+        <li><strong>Neck and shoulder rolls</strong> &mdash; a few slow rotations each way</li>
+      </ul>
+      <div class="note-box">This is a complete session on its own. There's no deficit to make up later.</div>
+    </div>
+
+    <div class="card routine-list" data-tier-content="okay">
+      <span class="tag plum">10&ndash;15 minutes &middot; seated/standing</span>
+      <h3>Okay day</h3>
+      <ul>
+        <li><strong>Seated band rows</strong> &mdash; anchor under feet, 8 gentle reps</li>
+        <li><strong>Band chest opener</strong> &mdash; pull apart at chest height, 8 reps</li>
+        <li><strong>Standing band leg press</strong> &mdash; 6&ndash;8 reps per side, skip if hips/knees flare today</li>
+        <li><strong>Slow walk</strong> &mdash; 5&ndash;10 minutes</li>
+        <li><strong>Box breathing</strong> &mdash; 2 min to close out (4 in &middot; hold 4 &middot; out 4 &middot; hold 4)</li>
+      </ul>
+    </div>
+
+    <div class="card routine-list" data-tier-content="good">
+      <span class="tag plum">15&ndash;20 minutes</span>
+      <h3>Good day</h3>
+      <ul>
+        <li>Everything from "Okay day," plus:</li>
+        <li><strong>Band bicep curls &amp; tricep extensions</strong> &mdash; light resistance, 8&ndash;10 reps each</li>
+        <li><strong>Light-weight arm raises</strong> &mdash; slow, 6 reps</li>
+        <li><strong>Glute bridges</strong> &mdash; 8 reps</li>
+        <li><strong>Extended walk</strong> &mdash; 15&ndash;20 min if it feels good</li>
+      </ul>
+    </div>
+
+    <div class="note-box" style="margin-top:4px;">
+      If you feel worse 12&ndash;24 hours after any activity, that's a sign to scale back next time &mdash; not to push harder.
+    </div>
+  </section>
+
+  <!-- EASTERN / TRADITIONAL -->
+  <section class="panel" id="panel-eastern" role="tabpanel" aria-labelledby="tab-eastern">
+    <p class="section-intro">Traditional practices, tagged by how much research currently backs them. Tap each to expand.</p>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        Tai chi &amp; qigong <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        Slow, flowing movement paired with breath work. Several fibromyalgia-specific studies show improvement in pain, sleep, and quality of life &mdash; one of the better-supported options here, and low physical risk.
+        <div class="evidence-row"><span class="evidence-pill ev-strong">Well supported</span></div>
+      </div></div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        Acupuncture <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        The most-studied traditional Chinese medicine practice. Modest but real benefit shown for fibromyalgia pain and fatigue in multiple trials; commonly used as an adjunct alongside conventional care.
+        <div class="evidence-row"><span class="evidence-pill ev-strong">Well supported</span></div>
+      </div></div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        Restorative / gentle yoga <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        Not power or hot yoga. Slow, supported poses show good research results for pain thresholds, sleep, and stress hormones in fibromyalgia. If hypermobile, favor stability over deep stretching.
+        <div class="evidence-row"><span class="evidence-pill ev-strong">Well supported</span></div>
+      </div></div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        Ayurvedic herbs (e.g. turmeric/curcumin) <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        Curcumin has genuine anti-inflammatory research behind it and has crossed into mainstream integrative medicine. Fuller Ayurvedic protocols (dosha typing, panchakarma) are less formally studied and panchakarma can be physically demanding &mdash; worth caution with fatigue.
+        <div class="evidence-row"><span class="evidence-pill ev-mixed">Mixed evidence</span></div>
+      </div></div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        TCM herbal formulas <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        Individualized blends are hard to study formally, though some ingredients show anti-inflammatory activity in lab research. Important: some herbs interact with immunosuppressants used for MCTD &mdash; share your full medication list with any practitioner.
+        <div class="evidence-row"><span class="evidence-pill ev-mixed">Mixed evidence</span></div>
+      </div></div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        Cupping, moxibustion, reflexology <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        Anecdotally popular, thin formal evidence. Generally low risk when done by a trained practitioner, which is why many people try them without much downside.
+        <div class="evidence-row"><span class="evidence-pill ev-early">Early / anecdotal</span></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- EMERGING -->
+  <section class="panel" id="panel-edge" role="tabpanel" aria-labelledby="tab-edge">
+    <p class="section-intro">Newer or less conventional approaches. Evidence ranges from "increasingly mainstream" to "early research stage" &mdash; the tags below reflect that spread. Anything requiring a prescription or clinical supervision should go through a doctor, not a self-directed source.</p>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        Low-dose naltrexone (LDN) <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        An off-label, repurposed prescription medication showing promising small-trial results for fibromyalgia pain, thought to work by calming inflammatory glial cell activity. Legal, prescribed by integrative-minded doctors.
+        <div class="evidence-row"><span class="evidence-pill ev-mixed">Promising, early</span></div>
+      </div></div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        Vagus nerve stimulation <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        Wearable (non-invasive) and implanted devices are being studied for chronic pain and autoimmune modulation, based on the vagus nerve's role in regulating inflammation.
+        <div class="evidence-row"><span class="evidence-pill ev-early">Early research</span></div>
+      </div></div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        Ketamine infusion therapy <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        Legal, administered only in specialized pain clinics under supervision &mdash; not self-use. Being studied for central sensitization pain conditions like fibromyalgia, with preliminary but encouraging results.
+        <div class="evidence-row"><span class="evidence-pill ev-early">Early, supervised only</span></div>
+      </div></div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        Gut microbiome modulation <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        Emerging research links gut dysbiosis to autoimmune activity and fibromyalgia severity. Still experimental as a targeted treatment for these conditions specifically.
+        <div class="evidence-row"><span class="evidence-pill ev-early">Early research</span></div>
+      </div></div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        Medical cannabis <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        Legal in many jurisdictions for chronic pain. Some fibromyalgia patients report benefit; quality evidence is still building, and interactions with other medications are worth discussing with a doctor.
+        <div class="evidence-row"><span class="evidence-pill ev-mixed">Mixed evidence, jurisdiction-dependent</span></div>
+      </div></div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" aria-expanded="false">
+        Stem cell therapy &amp; psychedelic-assisted therapy <span class="plus">+</span>
+      </button>
+      <div class="accordion-panel"><div class="accordion-panel-inner">
+        Both are genuinely active research areas &mdash; but also where unproven commercial clinics and unregulated, unsupervised use cause real harm. If curious, look for enrolling clinical trials (ClinicalTrials.gov) rather than private clinics or self-sourcing, which steps outside medical supervision and, for psychedelics, outside the law in most places.
+        <div class="evidence-row"><span class="evidence-pill ev-early">Early / trial-stage only</span></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- LINKS -->
+  <section class="panel" id="panel-links" role="tabpanel" aria-labelledby="tab-links">
+    <p class="section-intro">A few starting points from established medical and research organizations &mdash; worth reading before (or alongside) anything above.</p>
+
+    <div class="link-grid">
+      <a class="link-card" href="https://www.nccih.nih.gov/health/providers/digest/chronic-pain-and-complementary-health-approaches" target="_blank" rel="noopener">
+        <div class="source">NIH &middot; NCCIH</div>
+        <div class="title">Chronic pain &amp; complementary approaches</div>
+        <div class="desc">The federal research center's overview of evidence behind acupuncture, tai chi, yoga, and more.</div>
+      </a>
+      <a class="link-card" href="https://www.rheumatology.org/patients/mixed-connective-tissue-disease" target="_blank" rel="noopener">
+        <div class="source">American College of Rheumatology</div>
+        <div class="title">Mixed Connective Tissue Disease</div>
+        <div class="desc">Patient-facing explanation of MCTD, diagnosis, and treatment from the leading US rheumatology body.</div>
+      </a>
+      <a class="link-card" href="https://www.mayoclinic.org/diseases-conditions/fibromyalgia/diagnosis-treatment/drc-20354785" target="_blank" rel="noopener">
+        <div class="source">Mayo Clinic</div>
+        <div class="title">Fibromyalgia: diagnosis &amp; treatment</div>
+        <div class="desc">Clear, regularly updated clinical overview including lifestyle and treatment options.</div>
+      </a>
+      <a class="link-card" href="https://www.ehlers-danlos.com/" target="_blank" rel="noopener">
+        <div class="source">The Ehlers-Danlos Society</div>
+        <div class="title">EDS &amp; hypermobility resources</div>
+        <div class="desc">Diagnostic criteria, physical therapy guidance, and patient community for EDS/HSD.</div>
+      </a>
+      <a class="link-card" href="https://www.niams.nih.gov/health-topics/fibromyalgia" target="_blank" rel="noopener">
+        <div class="source">NIH &middot; NIAMS</div>
+        <div class="title">Fibromyalgia overview</div>
+        <div class="desc">Government research institute's summary of causes, symptoms, and management.</div>
+      </a>
+      <a class="link-card" href="https://clinicaltrials.gov/search?cond=Mixed%20Connective%20Tissue%20Disease" target="_blank" rel="noopener">
+        <div class="source">ClinicalTrials.gov</div>
+        <div class="title">Enrolling MCTD &amp; fibromyalgia trials</div>
+        <div class="desc">The legitimate way to access experimental treatments &mdash; searchable, government-run registry.</div>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  This page is educational, not medical advice. Bring anything here to a rheumatologist or physician familiar with your history before starting it &mdash; especially anything involving medication, supplements, or supervised procedures.
+</footer>
+
+<script>
+  // Tabs
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.setAttribute('aria-selected','false'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.setAttribute('aria-selected','true');
+      document.getElementById(tab.dataset.panel).classList.add('active');
+    });
+  });
+
+  // Energy picker
+  const energyBtns = document.querySelectorAll('.energy-btn');
+  const routineLists = document.querySelectorAll('.routine-list');
+  energyBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      energyBtns.forEach(b => { b.classList.remove('selected'); b.setAttribute('aria-pressed','false'); });
+      routineLists.forEach(r => r.classList.remove('active'));
+      btn.classList.add('selected');
+      btn.setAttribute('aria-pressed','true');
+      document.querySelector(`.routine-list[data-tier-content="${btn.dataset.tier}"]`).classList.add('active');
+    });
+  });
+
+  // Accordion
+  document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.accordion-item');
+      const isOpen = item.classList.contains('open');
+      item.classList.toggle('open', !isOpen);
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+</script>
+
+</body>
+</html>
