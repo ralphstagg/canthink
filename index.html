@@ -33,14 +33,6 @@
   /* HERO */
   .hero{padding:110px 24px 90px; border-bottom:1px solid var(--line);}
   .hero .wrap{text-align:left;}
-  .mark{
-    font-family:'Fraunces', serif;
-    font-weight:700;
-    font-size:1.05rem;
-    color:var(--ember);
-    letter-spacing:.01em;
-    margin-bottom:48px;
-  }
   .hero h1{
     font-size:clamp(2.4rem, 6vw, 3.6rem);
     font-weight:600;
@@ -106,13 +98,36 @@
     max-width:760px;
     margin:0 auto;
   }
+
+  .site-nav{
+    border-bottom:1px solid var(--line);
+    padding:18px 24px;
+  }
+  .site-nav .nav-inner{
+    max-width:760px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+  }
+  .site-nav a{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1rem;
+    color:var(--ember);
+    text-decoration:none;
+  }
 </style>
 </head>
 <body>
 
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html">Can&rsquo;t Think</a>
+  </div>
+</nav>
+
 <div class="hero">
   <div class="wrap">
-    <div class="mark">Can't Think</div>
     <h1>Some days the noise wins.</h1>
     <p class="manifesto">Chaos, hate, ignorance, taught bias, racism, greed &mdash; there's so much of it that just sitting still to think feels impossible. And if you do dare to dwell on it, it's hard to know where to even begin making sense of it, let alone <strong>becoming a catalyst for change.</strong></p>
   </div>
@@ -130,7 +145,7 @@
     <div class="eyebrow">Current Ideas</div>
     <h2>A tool for people and family and friends on chronic pain! </h2>
 
-    <a class="link-card" href="a-path-to-understand-and-heal.html" target="_blank" rel="noopener">
+    <a class="link-card" href="docs/a-path-to-understand-and-heal.html">
       <div class="lc-text">
         <div class="lc-title">Learn to Love...</div>
         <div class="lc-desc">A guide to understanding and living with chronic illness &mdash; for those carrying it, and for the people who love them.</div>
