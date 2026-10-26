@@ -1,0 +1,145 @@
+:root{
+  --bg:#14171B;
+  --bg-raised:#1D2127;
+  --bg-raised-2:#242931;
+  --ink:#EDEAE2;
+  --ink-soft:#A9ACA6;
+  --ink-faint:#6B6F6A;
+  --ember:#C1543A;
+  --ember-soft:#3A2620;
+  --sage:#7B9683;
+  --sage-soft:#212B25;
+  --gold:#C99A3E;
+  --gold-soft:#332A17;
+  --line:#2C3138;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Karla', sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:'Fraunces', serif; margin:0 0 .4em 0; color:var(--ink); font-weight:600;}
+a{color:var(--sage);}
+.wrap{max-width:820px; margin:0 auto; padding:0 24px;}
+
+/* TOP NAV */
+.topnav{
+  padding:22px 24px;
+  border-bottom:1px solid var(--line);
+}
+.topnav .wrap{display:flex; align-items:center; justify-content:space-between;}
+.topnav .mark{
+  font-family:'Fraunces', serif; font-weight:700; font-size:1rem; color:var(--ember);
+  text-decoration:none;
+}
+.topnav .crumb{font-size:.85rem; color:var(--ink-faint);}
+.topnav .crumb a{color:var(--ink-soft); text-decoration:none;}
+.topnav .crumb a:hover{color:var(--sage);}
+
+/* HERO */
+.hero{padding:64px 24px 48px; border-bottom:1px solid var(--line);}
+.hero .eyebrow{font-size:.82rem; font-weight:700; color:var(--ink-faint); letter-spacing:.03em; text-transform:uppercase; margin-bottom:14px;}
+.hero h1{font-size:clamp(2rem, 5vw, 2.8rem); line-height:1.12; max-width:20ch; margin-bottom:18px;}
+.hero .sub{font-size:1.05rem; color:#CFCCC3; max-width:62ch;}
+.hero .meta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:22px;}
+.pill{
+  display:inline-block; font-size:.76rem; font-weight:700; padding:4px 11px;
+  border-radius:999px; background:var(--bg-raised); border:1px solid var(--line); color:var(--ink-soft);
+}
+.pill.r{color:#D98465; background:var(--ember-soft); border-color:#4A3027;}
+.pill.d{color:#8FB399; background:var(--sage-soft); border-color:#2C3B30;}
+
+/* SECTIONS */
+.section{padding:44px 24px; border-bottom:1px solid var(--line);}
+.section:last-of-type{border-bottom:none;}
+.section h2{font-size:1.35rem; margin-bottom:16px;}
+.section p{max-width:68ch; color:#D4D1C8; margin:0 0 14px 0;}
+.section .lede{color:var(--ink-soft); font-size:.95rem; max-width:68ch; margin-bottom:22px;}
+
+/* GLANCE GRID */
+.glance-grid{display:grid; grid-template-columns:1fr; gap:14px;}
+@media(min-width:620px){.glance-grid{grid-template-columns:1fr 1fr;}}
+.glance-item{background:var(--bg-raised); border:1px solid var(--line); border-radius:10px; padding:16px 18px;}
+.glance-item .label{font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-faint); margin-bottom:6px;}
+.glance-item .value{font-size:.95rem; color:var(--ink);}
+
+/* TABLES */
+.table-wrap{overflow-x:auto; margin-bottom:18px; border:1px solid var(--line); border-radius:10px;}
+table{width:100%; border-collapse:collapse; font-size:.9rem; background:var(--bg-raised);}
+th{
+  text-align:left; font-family:'Karla',sans-serif; font-weight:700; font-size:.75rem;
+  text-transform:uppercase; letter-spacing:.03em; color:var(--ink-faint);
+  padding:12px 16px; border-bottom:1px solid var(--line); background:var(--bg-raised-2);
+  white-space:nowrap;
+}
+td{padding:12px 16px; border-bottom:1px solid var(--line); color:#D4D1C8; vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+td.vote-yes{color:var(--sage); font-weight:700;}
+td.vote-no{color:var(--ember); font-weight:700;}
+
+/* ISSUE CARDS */
+.issue{background:var(--bg-raised); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:12px;}
+.issue .topic{font-size:.78rem; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:.02em; margin-bottom:8px;}
+.issue p{margin:0; font-size:.93rem; color:#D4D1C8;}
+
+/* TIMELINE */
+.timeline{border-left:2px solid var(--line); padding-left:22px; margin-left:4px;}
+.tl-item{position:relative; margin-bottom:20px;}
+.tl-item::before{
+  content:''; position:absolute; left:-27px; top:5px; width:10px; height:10px; border-radius:50%;
+  background:var(--sage); border:2px solid var(--bg);
+}
+.tl-item .tl-date{font-size:.78rem; font-weight:700; color:var(--ink-faint); margin-bottom:4px;}
+.tl-item p{margin:0; font-size:.92rem; color:#D4D1C8;}
+
+/* RESPONSE BOX */
+.response-box{
+  margin-top:10px; padding:12px 16px; background:var(--bg-raised-2); border-left:3px solid var(--sage);
+  border-radius:6px; font-size:.88rem; color:var(--ink-soft);
+}
+.response-box .rb-label{font-size:.7rem; font-weight:700; text-transform:uppercase; color:var(--sage); margin-bottom:4px; letter-spacing:.03em;}
+
+/* NOTE / CAVEAT */
+.note-box{
+  background:var(--gold-soft); border-left:4px solid var(--gold);
+  padding:14px 18px; border-radius:8px; font-size:.9rem; color:#E3CFA0; margin:18px 0;
+}
+
+/* SOURCES */
+.sources-list{columns:1; font-size:.84rem; color:var(--ink-soft);}
+@media(min-width:620px){.sources-list{columns:2; column-gap:32px;}}
+.sources-list li{margin-bottom:7px; break-inside:avoid;}
+
+/* OPEN QUESTION */
+.open-q{
+  background:transparent; border:1px dashed var(--line); border-radius:8px;
+  padding:14px 18px; font-size:.88rem; color:var(--ink-faint); margin-top:14px;
+}
+.open-q strong{color:var(--ink-soft);}
+
+footer{
+  padding:32px 24px 56px;
+  font-size:.82rem;
+  color:var(--ink-faint);
+  max-width:820px;
+  margin:0 auto;
+}
+
+/* HUB CANDIDATE CARDS */
+.candidate-grid{display:grid; grid-template-columns:1fr; gap:18px;}
+@media(min-width:620px){.candidate-grid{grid-template-columns:1fr 1fr;}}
+.candidate-card{
+  display:block; background:var(--bg-raised); border:1px solid var(--line); border-radius:12px;
+  padding:26px 24px; text-decoration:none; color:var(--ink); transition:border-color .15s ease, transform .1s ease;
+}
+.candidate-card:hover{border-color:var(--sage); transform:translateY(-2px);}
+.candidate-card .cc-party{font-size:.74rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em; margin-bottom:8px;}
+.candidate-card.r .cc-party{color:#D98465;}
+.candidate-card.d .cc-party{color:#8FB399;}
+.candidate-card .cc-name{font-family:'Fraunces', serif; font-size:1.4rem; font-weight:600; margin-bottom:8px;}
+.candidate-card .cc-desc{font-size:.9rem; color:var(--ink-soft); margin-bottom:16px;}
+.candidate-card .cc-arrow{font-size:1.2rem; color:var(--sage);}
