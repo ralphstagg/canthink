@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US Violent Crime, 2004&ndash;Present &mdash; Can't Think</title>
+<meta name="description" content="US violent crime is at a multi-decade low. A sourced look at the full 2004-2025 trend by crime type, who violence falls on, and what the data does and doesn't show about immigration status.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fact-sheet.css">
+<style>
+  /* TL;DR */
+  .tldr{
+    background:var(--sage-soft); border-left:4px solid var(--sage);
+    padding:18px 22px; border-radius:8px; margin:0 0 26px 0;
+  }
+  .tldr .tldr-label{
+    font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--sage); margin-bottom:8px;
+  }
+  .tldr p{margin:0 0 10px 0; color:#DCE4DD; font-size:1rem;}
+  .tldr ul{margin:0; padding-left:20px; color:#DCE4DD;}
+  .tldr ul li{margin-bottom:8px;}
+  .tldr ul li strong{color:var(--ink);}
+  .tldr p:last-child, .tldr ul:last-child{margin-bottom:0;}
+
+  /* PROSE LISTS */
+  .section ul.prose{max-width:68ch; margin:0 0 16px 0; padding-left:22px; color:#D4D1C8;}
+  .section ul.prose li{margin-bottom:8px;}
+  .section ul.prose li strong{color:var(--ink);}
+
+  /* SUBHEADS */
+  .subhead{
+    font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em;
+    color:var(--gold); margin:24px 0 10px;
+  }
+  .subhead:first-of-type{margin-top:4px;}
+
+  /* BAR CHART (incarceration rates) */
+  .barchart{margin:4px 0 18px 0;}
+  .barchart .bc-caption{font-size:.78rem; color:var(--ink-faint); margin-bottom:16px;}
+  .bc-row{display:grid; grid-template-columns:150px 1fr 70px; align-items:center; gap:12px; margin-bottom:14px;}
+  .bc-row .bc-label{font-size:.86rem; color:var(--ink-soft);}
+  .bc-row .bc-track{background:var(--line); border-radius:4px; height:12px; position:relative;}
+  .bc-row .bc-fill{background:var(--sage); border-radius:4px; height:12px;}
+  .bc-row .bc-value{font-size:.9rem; color:var(--ink); font-weight:700; text-align:right; white-space:nowrap;}
+  @media(max-width:520px){
+    .bc-row{grid-template-columns:1fr; gap:4px;}
+    .bc-row .bc-value{text-align:left;}
+  }
+
+  /* SOURCES */
+  .sources-list a{text-decoration:none;}
+  .sources-list a:hover{text-decoration:underline;}
+
+  /* BYLINE */
+  .hero .byline{font-size:.85rem; color:var(--ink-faint); margin-top:18px;}
+
+  .disclaimer{font-size:.84rem; color:var(--ink-faint); font-style:italic; margin-top:10px;}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="wrap">
+    <a class="mark" href="index.html">Can&rsquo;t Think</a>
+    <div class="crumb"><a href="index.html">Home</a> &middot; <a href="humanity-and-the-problems-it-faces.html">Humanity and the Problems It Faces</a> &middot; US Violent Crime</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">Humanity and the Problems It Faces &middot; Oct. 31, 2026</div>
+  <h1>US Violent Crime, 2004&ndash;Present</h1>
+  <p class="sub">US violent crime is at a multi-decade low: the FBI&rsquo;s estimated rate fell from 463 per 100,000 people in 2004 to 328 in 2025, and the 2025 murder rate of 4.1 ties 1955&ndash;56 as the lowest since national estimates began in 1936.</p>
+  <div class="meta-row">
+    <span class="pill">Crime data</span>
+    <span class="pill">Fact check</span>
+    <span class="pill">~12 min read</span>
+  </div>
+  <div class="byline">Authors: Ralph (Human) and Claude (AI)</div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <h2>TL;DR</h2>
+    <div class="tldr">
+      <div class="tldr-label">The short answer</div>
+      <p>US violent crime is at a multi-decade low: the FBI&rsquo;s estimated rate fell from 463 per 100,000 people in 2004 to 328 in 2025, and the 2025 murder rate of 4.1 ties 1955&ndash;56 as the lowest since national estimates began in 1936 (<a href="https://cde.ucr.cjis.gov/LATEST/resources/reports/UCR_Summary_of_Reported_Crimes_in_the_Nation_2025.pdf" target="_blank" rel="noopener">FBI, 2025</a>).</p>
+      <ul>
+        <li><strong>The path was not a straight line.</strong> Crime fell from 2006 to 2014, rose in 2015&ndash;16, then spiked during the pandemic (murder peaked at 6.6 in 2020 and 2022). 2025 brought the largest one-year drop on record: violent crime down 9.3%, murder down 18.1%. Preliminary January&ndash;June 2026 data show violent crime down another 10.6% and murder down 23%.</li>
+        <li><strong>Robbery fell the most; aggravated assault the least.</strong> Robbery is down about 64% since 2004. Aggravated assault, about 70% of all violent crime, is down about 18% and still above its 2013&ndash;15 level.</li>
+        <li><strong>Rape is hard to trend.</strong> The FBI broadened its definition in 2013, so earlier and later years can&rsquo;t be compared. Under the current definition, the 2025 rate (36.1) is the lowest since that change took effect. Victims report only about a quarter of rapes and sexual assaults to police.</li>
+        <li><strong>Victims and offenders are mostly young men.</strong> 76% of 2025 homicide victims were male, and ages 18&ndash;24 had the highest homicide rate. Victims perceived about 76% of nonfatal violent offenders as male.</li>
+        <li><strong>Race:</strong> Black Americans were 50% of homicide victims in 2025, a rate 7 times that of white Americans. Black offenders are also overrepresented relative to population share. Most violence happens within the same racial group.</li>
+        <li><strong>Legal (immigration) status:</strong> No national crime database records it. Nationwide census-based estimates show native-born Americans incarcerated at 1,195 per 100,000 in 2024, versus 674 for illegal immigrants and 303 for legal immigrants. A study of all 50 states found that more undocumented immigration was not linked to more violent crime. Critics question how status and population are estimated, so treat this as the leading but contested finding.</li>
+        <li><strong>Rhetoric vs. data.</strong> Illegal immigrants have been portrayed as rapists and murderers since at least Donald Trump&rsquo;s June 2015 campaign announcement (&ldquo;They&rsquo;re bringing crime. They&rsquo;re rapists&rdquo;). The national data that exist do not support that portrayal: every nationwide measure shows lower rates than for native-born Americans. The data are also too incomplete to settle the question definitively in either direction, and supporters of the rhetoric point to individual crimes by people who had prior deportation orders. <em>Author&rsquo;s view: because the claim is made so confidently on top of data that is not properly captured, it looks more like a political tactic than a conclusion drawn from evidence.</em></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <h2>At a glance</h2>
+    <p class="lede">The rate fell through 2014, rose with the pandemic, and dropped sharply in 2024&ndash;25. The 2013 step up in rape statistics reflects the FBI&rsquo;s broader definition that year, not a real jump in crime.</p>
+    <div class="glance-grid">
+      <div class="glance-item">
+        <div class="label">Violent crime rate, 2004</div>
+        <div class="value">463 per 100,000</div>
+      </div>
+      <div class="glance-item">
+        <div class="label">Violent crime rate, 2025</div>
+        <div class="value">328 per 100,000</div>
+      </div>
+      <div class="glance-item">
+        <div class="label">Murder rate, 2025</div>
+        <div class="value">4.1 per 100,000 &mdash; ties 1955&ndash;56 as the lowest since 1936</div>
+      </div>
+      <div class="glance-item">
+        <div class="label">2025 vs. 2024</div>
+        <div class="value">Violent crime &minus;9.3% &middot; Murder &minus;18.1%</div>
+      </div>
+      <div class="glance-item">
+        <div class="label">Jan&ndash;Jun 2026 vs. same period 2025 (preliminary)</div>
+        <div class="value">Violent crime &minus;10.6% &middot; Murder &minus;23.0%</div>
+      </div>
+      <div class="glance-item">
+        <div class="label">Robbery, 2006 peak &rarr; 2025</div>
+        <div class="value">150 &rarr; 49 per 100,000</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <h2>Trends by crime type</h2>
+    <p class="lede">Every category is lower in 2025 than in 2004, but each took a different route. Rates are per 100,000 people.</p>
+
+    <div class="issue">
+      <div class="topic">Murder and nonnegligent manslaughter</div>
+      <p>Drifted down to 4.4 in 2014, jumped about 30% in 2020 (the largest one-year rise on record), and has fallen every year since 2022. About 14,085 people were murdered in 2025. Firearms were involved in 76% of homicides (<a href="https://bjs.ojp.gov/document/hvus25.pdf" target="_blank" rel="noopener">BJS</a>).</p>
+    </div>
+    <div class="issue">
+      <div class="topic">Rape</div>
+      <p>Under the old &ldquo;forcible rape&rdquo; definition, rates fell slowly from 32 to 27 between 2004 and 2012. In 2013 the FBI adopted a broader, gender-neutral definition that includes any non-consensual penetration, which raised counts. Under that definition, rates rose to 44 in 2018 and have declined since, to 36.1 in 2025.</p>
+    </div>
+    <div class="issue">
+      <div class="topic">Robbery</div>
+      <p>The steadiest decline of any category: from a high of 150 in 2006 to 49 in 2025, less than a third of its peak.</p>
+    </div>
+    <div class="issue">
+      <div class="topic">Aggravated assault</div>
+      <p>Fell to 229 by 2014, rose with the pandemic, and in 2025 (238) is still above its 2013&ndash;15 level. It drives the overall violent crime rate because it accounts for about 70% of the total.</p>
+    </div>
+
+    <div class="note-box">
+      <strong>Why the 2020&ndash;21 spike happened.</strong> The spike was nationwide and nearly identical in Republican- and Democratic-voting states: murder rose an average of 32.2% in states that voted for Trump in 2020 and 30.8% in states that voted for Biden (<a href="https://www.thirdway.org/report/the-red-state-murder-problem" target="_blank" rel="noopener">Third Way</a>). Researchers attribute it to several overlapping factors, including pandemic disruption, changes in policing after George Floyd&rsquo;s killing, and more gun carrying, rather than any single policy (<a href="https://theconversation.com/more-guns-pandemic-stress-and-a-police-legitimacy-crisis-created-perfect-conditions-for-homicide-spike-in-2020-168823" target="_blank" rel="noopener">The Conversation</a>). The increase was almost entirely in gun violence, and it accelerated in late May 2020 rather than during the strictest lockdowns (<a href="https://manhattan-institute.org/breaking-down-the-2020-homicide-spike" target="_blank" rel="noopener">Manhattan Institute</a>).
+    </div>
+
+    <div class="subhead">How to read these numbers</div>
+    <ul class="prose">
+      <li><strong>FBI figures count crimes reported to police.</strong> The national victim survey found only 48% of violent victimizations, and 24% of rapes and sexual assaults, were reported in 2024 (<a href="https://bjs.ojp.gov/document/cv24.pdf" target="_blank" rel="noopener">BJS, Criminal Victimization 2024</a>). Murder is the most complete count.</li>
+      <li><strong>2021 is not comparable.</strong> That year the FBI switched to its incident-based system (NIBRS), and too few agencies reported. The FBI says 2021 estimates are below its national-representativeness standard.</li>
+      <li><strong>Estimates get revised.</strong> The FBI updates prior years each release. This document uses the 2006&ndash;2025 series from the 2025 report and the 2004&ndash;05 figures from the FBI&rsquo;s 2019 multi-year table, so 2004&ndash;05 may differ slightly from current FBI estimates.</li>
+      <li><strong>2026 is preliminary.</strong> January&ndash;June 2026 vs. the same period of 2025: violent crime &minus;10.6%, murder &minus;23.0%, rape &minus;18.6%, robbery &minus;19.6%, aggravated assault &minus;7.2% (FBI). Full-year 2026 data won&rsquo;t be published until 2027.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <h2>Victim and offender demographics</h2>
+    <p class="lede">Violence falls hardest on young men, and on Black Americans in particular, both as victims and as offenders. Figures below are the latest national data; race categories other than Hispanic exclude Hispanics unless noted.</p>
+
+    <div class="subhead">Homicide victims, 2025</div>
+    <ul class="prose">
+      <li><strong>Sex:</strong> 76% male. The male rate (6.6 per 100,000) is more than 3 times the female rate (2.0). Women are the exception for intimate-partner homicide: 41% of female victims were killed by a current or former partner.</li>
+      <li><strong>Age:</strong> Ages 18&ndash;24 had the highest rate (9.2), followed by 25&ndash;34 (7.2).</li>
+      <li><strong>Race/ethnicity:</strong> Black Americans were 50% of victims at a rate of 14.6, more than 7 times the white rate of 2.0.</li>
+    </ul>
+    <p class="disclaimer">Source: <a href="https://bjs.ojp.gov/document/hvus25.pdf" target="_blank" rel="noopener">BJS, Homicide Victimization in the United States, 2025</a></p>
+
+    <div class="subhead">Offenders</div>
+    <p>Offender data are less complete, because many offenders are never identified. Two sources:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Measure</th><th>Male</th><th>White</th><th>Black</th><th>Hispanic</th><th>Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Share of U.S. population, 12+</td><td>49%</td><td>60%</td><td>12%</td><td>19%</td><td>NCVS 2024</td></tr>
+          <tr><td>Nonfatal violent offenders, as perceived by victims</td><td>76%</td><td>47%</td><td>28%</td><td>16%</td><td><a href="https://bjs.ojp.gov/document/cv24.pdf" target="_blank" rel="noopener">NCVS 2024</a></td></tr>
+          <tr><td>Known murder offenders (race known)</td><td>88%</td><td>41%*</td><td>56%</td><td>&mdash;</td><td><a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/expanded-homicide.pdf/at_download/file" target="_blank" rel="noopener">FBI, 2019</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="disclaimer">*The FBI&rsquo;s &ldquo;White&rdquo; murder-offender figure includes most Hispanic offenders, since ethnicity is recorded separately and inconsistently. 2019 is the last year the FBI published this table in its traditional form; an analysis of 2024 FBI data by the Crime Prevention Research Center put the Black share of known murder offenders at 56.4% and found 53% were ages 13&ndash;29 (<a href="https://gunsamerica.com/digest/fbi-murder-data-2024-cprc-report/" target="_blank" rel="noopener">summary</a>).</p>
+
+    <ul class="prose">
+      <li><strong>Most violence is within a group.</strong> In 2024, white offenders accounted for about half of violent incidents against white victims, and Black offenders for about half against Black victims (NCVS; the rest include offenders of unknown race). Most homicides involve someone the victim knew: 42% were committed by a non-family acquaintance in 2025.</li>
+      <li><strong>Context, not cause.</strong> These are raw shares; they do not control for age, income, neighborhood or other factors that criminologists link to violence.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <h2>Offenders&rsquo; immigration status</h2>
+    <p class="lede">Nationally, the best available evidence finds that immigrants, both legal and illegal, are incarcerated at lower rates than native-born Americans, and that states with more undocumented immigrants have not had more violent crime. No national crime database records offenders&rsquo; immigration status, so every national figure comes from census-based incarceration estimates, victim surveys or statistical studies.</p>
+
+    <div class="barchart">
+      <div class="bc-row">
+        <div class="bc-label">Native-born Americans</div>
+        <div class="bc-track"><div class="bc-fill" style="width:100%;"></div></div>
+        <div class="bc-value">1,195</div>
+      </div>
+      <div class="bc-row">
+        <div class="bc-label">Illegal immigrants</div>
+        <div class="bc-track"><div class="bc-fill" style="width:56.4%;"></div></div>
+        <div class="bc-value">674</div>
+      </div>
+      <div class="bc-row">
+        <div class="bc-label">Legal immigrants</div>
+        <div class="bc-track"><div class="bc-fill" style="width:25.4%;"></div></div>
+        <div class="bc-value">303</div>
+      </div>
+      <p class="bc-caption">Incarceration rate per 100,000 people, by status, 2024. Status is estimated statistically from census survey data, not observed directly. Source: <a href="https://www.cato.org/briefing-paper/illegal-immigrant-incarceration-rates-2010-2024-demographics-american-imprisonment" target="_blank" rel="noopener">Cato Institute, 2026</a>, analysis of the 2024 American Community Survey, ages 18&ndash;54.</p>
+    </div>
+
+    <div class="subhead">What the national data show</div>
+    <ul class="prose">
+      <li><strong>Incarceration, 2024.</strong> Census survey data count people living in prisons and jails. Researchers then estimate who is likely an illegal immigrant from characteristics such as citizenship, year of arrival and benefit use. Native-born Americans are incarcerated at the highest rate of the three groups (<a href="https://www.cato.org/briefing-paper/illegal-immigrant-incarceration-rates-2010-2024-demographics-american-imprisonment" target="_blank" rel="noopener">Cato, 2026</a>).</li>
+      <li><strong>Lifetime incarceration.</strong> Among Americans born in 1990, 11% of the native-born had been incarcerated by age 33, versus 3% of immigrants. After controlling for age, race and state, immigrants were 48% less likely to be newly incarcerated (<a href="https://www.cato.org/blog/immigrants-have-lower-lifetime-incarceration-rates-native-born-americans" target="_blank" rel="noopener">Cato, 2025</a>).</li>
+      <li><strong>150 years of census data.</strong> A peer-reviewed study by economists at Stanford, Princeton and Northwestern found immigrants have never been incarcerated at a higher rate than the U.S.-born since 1870. Today they are 60% less likely to be incarcerated, or 30% less likely compared with U.S.-born white men. This study covers all immigrants and does not separate legal from illegal (<a href="https://kingcenter.stanford.edu/publications/trade-and-migration/law-abiding-immigrants-incarceration-gap-between-immigrants-and-us" target="_blank" rel="noopener">Abramitzky et al.</a>).</li>
+      <li><strong>All 50 states, 1990&ndash;2014.</strong> A study in <em>Criminology</em> compared each state&rsquo;s undocumented population with its FBI violent crime rate over 24 years, controlling for unemployment, age, gun availability and drug activity. Undocumented immigration did not increase violent crime; the relationship was generally negative, though not significant in every model (<a href="https://krimdok.uni-tuebingen.de/Record/1578394228" target="_blank" rel="noopener">Light &amp; Miller, 2018</a>).</li>
+    </ul>
+
+    <div class="subhead">Native-born Americans vs. legal immigrants</div>
+    <p>Legal immigrants have the lowest rates of any group in every dataset that separates them from native-born Americans.</p>
+    <ul class="prose">
+      <li><strong>Who counts as what.</strong> &ldquo;Native-born&rdquo; means anyone born a U.S. citizen, including the U.S.-born children of immigrants. &ldquo;Legal immigrants&rdquo; are foreign-born people with lawful status: naturalized citizens, green-card holders and visa holders.</li>
+      <li><strong>Incarceration, 2024:</strong> 303 per 100,000 for legal immigrants vs. 1,195 for native-born Americans, about 75% lower. Legal immigrants also have lower rates than illegal immigrants (674).</li>
+      <li><strong>As crime victims:</strong> naturalized citizens reported 8.5 violent victimizations per 1,000 in 2024, vs. 25.6 for U.S.-born citizens. Noncitizens (legal and illegal combined) reported 13.4 (<a href="https://bjs.ojp.gov/document/cv24.pdf" target="_blank" rel="noopener">BJS</a>).</li>
+      <li><strong>Possible reasons.</strong> Legal immigrants pass criminal background checks to get visas and green cards, and a conviction can cost them their status. They also differ from the native-born in age, employment and education. Raw rates don&rsquo;t separate these factors.</li>
+      <li><strong>Invisible in national crime data.</strong> In FBI statistics a naturalized citizen is simply a citizen, so no national crime dataset separates them from the native-born.</li>
+    </ul>
+
+    <div class="subhead">The other side of the debate</div>
+    <ul class="prose">
+      <li><strong>Undercount argument.</strong> The Center for Immigration Studies (CIS), which favors lower immigration, argues that status is often confirmed only long after arrest, so statistics recorded at arrest or survey time understate illegal-immigrant crime. Using later-confirmed records from the one state that tracks status at arrest, CIS concluded illegal immigrants had above-average homicide and sexual assault conviction rates (<a href="https://cis.org/Richwine/Misuse-Texas-Data-Understates-Illegal-Immigrant-Criminality" target="_blank" rel="noopener">CIS, 2022</a>). Cato replied that CIS&rsquo;s records double-counted some offenders (<a href="https://www.cato.org/blog/center-immigration-studies-still-wrong-about-illegal-immigrant-crime-texas" target="_blank" rel="noopener">Cato reply</a>). Both groups are advocacy-oriented; Cato is libertarian and generally pro-immigration.</li>
+      <li><strong>Method limits.</strong> Census-based incarceration estimates infer status statistically rather than observing it, and miss people deported after serving a sentence, which can make immigrant rates look lower.</li>
+      <li><strong>Absolute numbers.</strong> In 2024 ICE reported 13,099 noncitizens convicted of homicide on its &ldquo;non-detained docket&rdquo; (<a href="https://www.politifact.com/factchecks/2024/oct/02/donald-trump/why-donald-trumps-claim-that-kamala-harris-let-in" target="_blank" rel="noopener">PolitiFact</a>). That figure is real but is not a crime rate: it accumulated over decades, includes legal residents, and can include people who are still in prison (<a href="https://www.factcheck.org/?p=260738" target="_blank" rel="noopener">FactCheck.org</a>).</li>
+      <li><strong>Individual cases still matter.</strong> A lower average rate does not mean no crimes by people in the country illegally; high-profile cases drive much of the public debate.</li>
+    </ul>
+
+    <div class="subhead">Why there aren&rsquo;t better statistics on illegal immigrants</div>
+    <p>The short answer: the national crime system never records immigration status, and the population being measured is itself an estimate.</p>
+    <ul class="prose">
+      <li><strong>The FBI doesn&rsquo;t collect it.</strong> Neither the FBI&rsquo;s incident-based system (NIBRS) nor its older summary system has a field for an offender&rsquo;s citizenship or immigration status. National crime counts can&rsquo;t be split by status at all.</li>
+      <li><strong>Police usually don&rsquo;t know.</strong> Officers don&rsquo;t routinely determine status, and many local agencies have policies against asking so that immigrant victims and witnesses keep cooperating. Status usually surfaces only when booking fingerprints are checked against DHS records.</li>
+      <li><strong>Fingerprint checks miss people.</strong> A match works only if the person already has a DHS record, such as a visa application or a prior border encounter. Someone who entered undetected can be recorded as unknown, and their status may be confirmed only years later, if ever.</li>
+      <li><strong>The denominator is a guess.</strong> No one directly counts people here illegally. For mid-2023, estimates ranged from 12.2 million (Center for Migration Studies) to 13.7 million (Migration Policy Institute) to 14.0 million (Pew); DHS&rsquo;s latest official estimate is 11 million for 2022 (<a href="https://www.migrationpolicy.org/system/files/2026-08/mpi-unauthorized-immigrants-fact-sheet-2025-final.pdf" target="_blank" rel="noopener">MPI</a>, <a href="https://www.pewresearch.org/race-and-ethnicity/2025/08/21/u-s-unauthorized-immigrant-population-reached-a-record-14-million-" target="_blank" rel="noopener">Pew</a>). A smaller estimate mechanically produces a higher crime rate.</li>
+      <li><strong>&ldquo;Illegal&rdquo; is not one status.</strong> Pew estimates more than 40% of unauthorized immigrants in 2023 had some protection from deportation, such as pending asylum cases, DACA or TPS. Studies classify these people differently, and status can change between a crime, an arrest and a survey.</li>
+      <li><strong>Only a few states publish anything.</strong> Texas, Georgia and Oklahoma release some crime or incarceration data by status; the other states and the federal government do not. National conclusions therefore rely on indirect census methods.</li>
+      <li><strong>Totals are not rates.</strong> Figures like ICE&rsquo;s docket counts or individual case reports have no population to divide by, so they can&rsquo;t be compared with native-born rates.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <h2>Sources</h2>
+    <p class="lede">Scope: national US data, 2004 through the latest full year (2025), plus preliminary first-half 2026. Rates are per 100,000 residents unless noted.</p>
+    <ul class="sources-list">
+      <li><a href="https://cde.ucr.cjis.gov/LATEST/resources/reports/UCR_Summary_of_Reported_Crimes_in_the_Nation_2025.pdf" target="_blank" rel="noopener">FBI, UCR Summary of Reported Crimes in the Nation, 2025 (released Aug. 2026)</a></li>
+      <li><a href="https://learninglink.oup.com/protected/files/content/file/1621790497407-1--Crime-in-the-US-2019.pdf" target="_blank" rel="noopener">FBI, Crime in the United States, Table 1, 2000&ndash;2019</a></li>
+      <li><a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/expanded-homicide.pdf/at_download/file" target="_blank" rel="noopener">FBI, Expanded Homicide Data, 2019</a></li>
+      <li><a href="https://bjs.ojp.gov/document/hvus25.pdf" target="_blank" rel="noopener">BJS, Homicide Victimization in the United States, 2025 (Oct. 2026)</a></li>
+      <li><a href="https://bjs.ojp.gov/document/cv24.pdf" target="_blank" rel="noopener">BJS, Criminal Victimization, 2024</a></li>
+      <li><a href="https://www.thirdway.org/report/the-red-state-murder-problem" target="_blank" rel="noopener">Third Way, The Red State Murder Problem</a></li>
+      <li><a href="https://theconversation.com/more-guns-pandemic-stress-and-a-police-legitimacy-crisis-created-perfect-conditions-for-homicide-spike-in-2020-168823" target="_blank" rel="noopener">The Conversation, conditions behind the 2020 homicide spike</a></li>
+      <li><a href="https://manhattan-institute.org/breaking-down-the-2020-homicide-spike" target="_blank" rel="noopener">Manhattan Institute, Breaking Down the 2020 Homicide Spike</a></li>
+      <li><a href="https://www.cato.org/briefing-paper/illegal-immigrant-incarceration-rates-2010-2024-demographics-american-imprisonment" target="_blank" rel="noopener">Cato Institute, Illegal Immigrant Incarceration Rates, 2010&ndash;2024</a></li>
+      <li><a href="https://www.cato.org/blog/immigrants-have-lower-lifetime-incarceration-rates-native-born-americans" target="_blank" rel="noopener">Cato Institute, Immigrants Have Lower Lifetime Incarceration Rates</a></li>
+      <li><a href="https://kingcenter.stanford.edu/publications/trade-and-migration/law-abiding-immigrants-incarceration-gap-between-immigrants-and-us" target="_blank" rel="noopener">Abramitzky et al., Law-Abiding Immigrants, 1870&ndash;2020</a></li>
+      <li><a href="https://krimdok.uni-tuebingen.de/Record/1578394228" target="_blank" rel="noopener">Light &amp; Miller, Does Undocumented Immigration Increase Violent Crime?, Criminology (2018)</a></li>
+      <li><a href="https://cis.org/Richwine/Misuse-Texas-Data-Understates-Illegal-Immigrant-Criminality" target="_blank" rel="noopener">Center for Immigration Studies, Misuse of Texas Data</a> and <a href="https://www.cato.org/blog/center-immigration-studies-still-wrong-about-illegal-immigrant-crime-texas" target="_blank" rel="noopener">Cato&rsquo;s reply</a></li>
+      <li><a href="https://www.pewresearch.org/race-and-ethnicity/2025/08/21/u-s-unauthorized-immigrant-population-reached-a-record-14-million-" target="_blank" rel="noopener">Pew Research Center, unauthorized immigrant population estimates</a> and <a href="https://www.migrationpolicy.org/system/files/2026-08/mpi-unauthorized-immigrants-fact-sheet-2025-final.pdf" target="_blank" rel="noopener">Migration Policy Institute fact sheet</a></li>
+      <li><a href="https://www.politifact.com/factchecks/2024/oct/02/donald-trump/why-donald-trumps-claim-that-kamala-harris-let-in" target="_blank" rel="noopener">PolitiFact on the ICE non-detained docket</a> and <a href="https://www.factcheck.org/?p=260738" target="_blank" rel="noopener">FactCheck.org</a></li>
+    </ul>
+  </div>
+</div>
+
+<footer class="wrap">
+  <a href="humanity-and-the-problems-it-faces.html">&larr; Back to Humanity and the Problems It Faces</a> &middot; Can&rsquo;t Think &middot; canthink.net
+</footer>
+
+</body>
+</html>
