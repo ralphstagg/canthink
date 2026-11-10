@@ -8,17 +8,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --sage-dark:#2E463F;
-    --sage:#5C7A6E;
-    --sage-pale:#E9EFEA;
-    --bg:#F5F4EF;
-    --plum:#8C5468;
-    --plum-pale:#F1E4E9;
-    --sand:#E4DCC9;
-    --ink:#26302B;
-    --ink-soft:#5B655F;
-    --card:#FFFFFF;
-    --line:#D9D3C4;
+    --sage-dark:#7B9683;
+    --sage:#8FB399;
+    --sage-pale:#212B25;
+    --bg:#14171B;
+    --plum:#C1543A;
+    --plum-pale:#3A2620;
+    --gold:#C99A3E;
+    --gold-soft:#332A17;
+    --ink:#EDEAE2;
+    --ink-soft:#A9ACA6;
+    --card:#1D2127;
+    --line:#2C3138;
     --radius-s:6px;
     --radius-m:14px;
   }
@@ -35,14 +36,14 @@
     font-family:'Fraunces', serif;
     font-weight:600;
     margin:0 0 .4em 0;
-    color:var(--sage-dark);
+    color:var(--ink);
   }
   p{margin:0 0 1em 0;}
   .wrap{max-width:880px;margin:0 auto;padding:0 20px 80px;}
 
   /* HERO */
   .hero{
-    background:linear-gradient(180deg, var(--sage-dark) 0%, #3C5C51 100%);
+    background:linear-gradient(180deg, #1E2B24 0%, #29392F 100%);
     color:#F2F0E6;
     padding:56px 20px 64px;
     position:relative;
@@ -103,7 +104,7 @@
     padding:12px 18px;
     border-radius:999px;
     cursor:pointer;
-    box-shadow:0 2px 6px rgba(38,48,43,0.08);
+    box-shadow:0 2px 8px rgba(0,0,0,0.35);
     transition:background .15s ease, color .15s ease, transform .1s ease;
   }
   .tab-btn:hover{transform:translateY(-1px);}
@@ -158,8 +159,8 @@
   .energy-btn .dot{
     display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:8px;
   }
-  .energy-btn[data-tier="flare"] .dot{background:#B4574A;}
-  .energy-btn[data-tier="okay"] .dot{background:#C99A3E;}
+  .energy-btn[data-tier="flare"] .dot{background:var(--plum);}
+  .energy-btn[data-tier="okay"] .dot{background:var(--gold);}
   .energy-btn[data-tier="good"] .dot{background:var(--sage);}
   .energy-btn strong{display:block; font-size:.98rem; color:var(--ink);}
   .energy-btn span.sub{font-size:.8rem; color:var(--ink-soft);}
@@ -176,7 +177,7 @@
     padding:12px 16px;
     border-radius:var(--radius-s);
     font-size:.92rem;
-    color:#5c3a47;
+    color:#E3B6A6;
     margin-top:16px;
   }
 
@@ -206,9 +207,9 @@
 
   .evidence-row{display:flex; gap:6px; margin-top:8px; flex-wrap:wrap;}
   .evidence-pill{font-size:.7rem; font-weight:700; padding:2px 9px; border-radius:999px;}
-  .ev-strong{background:#DCEAE1; color:#2E5A44;}
-  .ev-mixed{background:#F4E7C8; color:#7A5C1E;}
-  .ev-early{background:#E9E1F1; color:#5B3E7A;}
+  .ev-strong{background:#1D2B22; color:#8FB399;}
+  .ev-mixed{background:var(--gold-soft); color:#E3CFA0;}
+  .ev-early{background:#241B33; color:#C7AEE3;}
 
   /* VENN */
   .venn-wrap{
@@ -273,26 +274,26 @@
 
     <div class="venn-wrap">
       <svg viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venn diagram showing three overlapping circles for MCTD, Fibromyalgia, and EDS/hypermobility, with shared symptoms listed in the overlapping areas.">
-        <circle cx="190" cy="150" r="120" fill="#5C7A6E" fill-opacity="0.55"/>
-        <circle cx="290" cy="150" r="120" fill="#8C5468" fill-opacity="0.5"/>
-        <circle cx="240" cy="235" r="120" fill="#C99A3E" fill-opacity="0.45"/>
+        <circle cx="190" cy="150" r="120" fill="#5C7A6E" fill-opacity="0.6"/>
+        <circle cx="290" cy="150" r="120" fill="#8C5468" fill-opacity="0.55"/>
+        <circle cx="240" cy="235" r="120" fill="#C99A3E" fill-opacity="0.5"/>
 
-        <text x="110" y="90" font-family="Fraunces, serif" font-weight="600" font-size="17" fill="#2E463F">MCTD</text>
-        <text x="110" y="108" font-family="Karla, sans-serif" font-size="10.5" fill="#3d4b45">Rashes, Raynaud's,</text>
-        <text x="110" y="121" font-family="Karla, sans-serif" font-size="10.5" fill="#3d4b45">organ monitoring</text>
+        <text x="110" y="90" font-family="Fraunces, serif" font-weight="600" font-size="17" fill="#CFE3D8">MCTD</text>
+        <text x="110" y="108" font-family="Karla, sans-serif" font-size="10.5" fill="#AEBFB6">Rashes, Raynaud's,</text>
+        <text x="110" y="121" font-family="Karla, sans-serif" font-size="10.5" fill="#AEBFB6">organ monitoring</text>
 
-        <text x="330" y="90" font-family="Fraunces, serif" font-weight="600" font-size="17" fill="#5c2f3c">Fibromyalgia</text>
-        <text x="318" y="108" font-family="Karla, sans-serif" font-size="10.5" fill="#5c2f3c">Widespread pain,</text>
-        <text x="330" y="121" font-family="Karla, sans-serif" font-size="10.5" fill="#5c2f3c">sleep disruption</text>
+        <text x="330" y="90" font-family="Fraunces, serif" font-weight="600" font-size="17" fill="#E3B9C9">Fibromyalgia</text>
+        <text x="318" y="108" font-family="Karla, sans-serif" font-size="10.5" fill="#CBA0AE">Widespread pain,</text>
+        <text x="330" y="121" font-family="Karla, sans-serif" font-size="10.5" fill="#CBA0AE">sleep disruption</text>
 
-        <text x="207" y="300" font-family="Fraunces, serif" font-weight="600" font-size="17" fill="#6b4e18">EDS / Hypermobility</text>
-        <text x="212" y="316" font-family="Karla, sans-serif" font-size="10.5" fill="#6b4e18">Joint instability</text>
+        <text x="207" y="300" font-family="Fraunces, serif" font-weight="600" font-size="17" fill="#E3CFA0">EDS / Hypermobility</text>
+        <text x="212" y="316" font-family="Karla, sans-serif" font-size="10.5" fill="#D9C190">Joint instability</text>
 
-        <text x="205" y="150" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="11" fill="#26302B">fatigue</text>
-        <text x="205" y="165" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="11" fill="#26302B">brain fog</text>
+        <text x="205" y="150" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="11" fill="#EDEAE2">fatigue</text>
+        <text x="205" y="165" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="11" fill="#EDEAE2">brain fog</text>
 
-        <text x="240" y="190" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="10.5" fill="#26302B">flare-driven</text>
-        <text x="240" y="204" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="10.5" fill="#26302B">pain sensitivity</text>
+        <text x="240" y="190" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="10.5" fill="#EDEAE2">flare-driven</text>
+        <text x="240" y="204" text-anchor="middle" font-family="Karla, sans-serif" font-weight="700" font-size="10.5" fill="#EDEAE2">pain sensitivity</text>
       </svg>
       <p class="venn-caption">Where circles overlap, symptoms genuinely look alike &mdash; which is exactly why tracking your own patterns (and a specialist who knows the overlap) matters more than guessing.</p>
     </div>
