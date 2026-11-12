@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- TITLE: page title, then " &mdash; Can't Think" -->
+<title>ARTICLE TITLE &mdash; Can't Think</title>
+<!-- DESCRIPTION: one or two plain sentences, used by search engines and link previews -->
+<meta name="description" content="ONE OR TWO SENTENCE SUMMARY.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fact-sheet.css">
+<style>
+  /* TL;DR
+     Sage (default) for Learn to Love and Words & Society.
+     For Current US Legislation, swap to the ember version:
+       background:var(--ember-soft); border-left:4px solid var(--ember);
+       label color:#D98465; text color:#EFD9D1 */
+  .tldr{
+    background:var(--sage-soft); border-left:4px solid var(--sage);
+    padding:18px 22px; border-radius:8px; margin:0 0 26px 0;
+  }
+  .tldr .tldr-label{
+    font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--sage); margin-bottom:8px;
+  }
+  .tldr p{margin:0 0 10px 0; color:#DCE4DD; font-size:1rem;}
+  .tldr p:last-child{margin-bottom:0;}
+  .tldr ul{margin:0; padding-left:20px; color:#DCE4DD;}
+  .tldr ul li{margin-bottom:6px;}
+  .tldr ul li strong{color:var(--ink);}
+
+  /* PROSE LISTS */
+  .section ul.prose{max-width:68ch; margin:0 0 16px 0; padding-left:22px; color:#D4D1C8;}
+  .section ul.prose li{margin-bottom:8px;}
+  .section ul.prose li strong{color:var(--ink);}
+
+  /* ERA TIMELINE TWEAK */
+  .tl-item .tl-date{color:var(--gold);}
+
+  /* PULL QUOTE */
+  .pull{
+    font-family:'Fraunces', serif; font-size:1.2rem; line-height:1.45;
+    color:var(--ink); max-width:50ch; margin:26px 0; padding-left:20px;
+    border-left:3px solid var(--ember);
+  }
+
+  /* SOURCES AS LINKS */
+  .sources-list a{text-decoration:none;}
+  .sources-list a:hover{text-decoration:underline;}
+
+  /* BYLINE */
+  .hero .byline{font-size:.85rem; color:var(--ink-faint); margin-top:18px;}
+
+  /* DISCLAIMER */
+  .disclaimer{font-size:.84rem; color:var(--ink-faint); font-style:italic; margin-top:10px;}
+
+  /* URGENT HELP TABLE (Learn to Love guides) */
+  .table-wrap.urgent table{border-color:#4A3027;}
+  .table-wrap.urgent th:first-child{color:#D98465;}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="wrap">
+    <a class='mark' href='/'>Can&rsquo;t Think</a>
+    <!-- CRUMB: Home · Section (linked) · short page name -->
+    <div class="crumb"><a href='/'>Home</a> &middot; <a href='/SECTION-SLUG'>SECTION NAME</a> &middot; SHORT PAGE NAME</div>
+  </div>
+</div>
+
+<div class="hero">
+  <!-- EYEBROW: section name and date, e.g. "Words &amp; Society &middot; Oct. 29, 2026" -->
+  <div class="eyebrow">SECTION NAME &middot; MON. D, YYYY</div>
+  <h1>ARTICLE TITLE</h1>
+  <p class="sub">One or two sentences that state the core idea of the page.</p>
+  <div class="meta-row">
+    <span class="pill">Topic tag</span>
+    <span class="pill">Second tag</span>
+    <span class="pill">~10 min read</span>
+  </div>
+  <div class="byline">Authors: YOUR NAME (Human) and Claude (AI)</div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <h2>TL;DR</h2>
+    <div class="tldr">
+      <div class="tldr-label">The short answer</div>
+      <p>One short, plain paragraph for a reader with little time.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <h2>The short version</h2>
+    <!-- Either a timeline (eras, dates) ... -->
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Label</div>
+        <p>One line.</p>
+      </div>
+    </div>
+    <!-- ... or a bulleted list:
+    <ul class="prose">
+      <li><strong>Bold label:</strong> one line.</li>
+    </ul> -->
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <h2>A body section</h2>
+    <p>Short paragraphs, three sentences at most. Link claims to their sources <a href="https://example.org" target="_blank" rel="noopener">inline</a>.</p>
+
+    <h3>A subsection</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Column</th><th>Column</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cell</td><td>Cell</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Labeled viewpoint or issue block -->
+    <div class="issue">
+      <div class="topic">Label (e.g. Supporters)</div>
+      <p>What this group says, in your own words.</p>
+      <!-- Optional, for fact sheets: the person's reply to a criticism -->
+      <div class="response-box"><div class="rb-label">Their response</div>What they said in reply.</div>
+    </div>
+
+    <div class="note-box">A side note, caveat or extra perspective.</div>
+    <div class="open-q"><strong>Open question:</strong> something the record does not settle yet.</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="wrap">
+    <h2>Sources</h2>
+    <ul class="sources-list">
+      <li><a href="https://example.org" target="_blank" rel="noopener">Publisher &ndash; Page title</a></li>
+    </ul>
+    <!-- Learn to Love guides and legislation pages end with:
+    <p class="disclaimer">This is general information, not medical (or legal) advice.</p> -->
+  </div>
+</div>
+
+<footer class="wrap">
+  <a href='/SECTION-SLUG'>&larr; Back to SECTION NAME</a> &middot; Can&rsquo;t Think &middot; cantthink.net
+</footer>
+
+</body>
+</html>
