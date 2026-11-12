@@ -23,6 +23,6 @@ Then, inside Claude Code:
 /philosophy-profiler  What does "socialism" actually mean?
 ```
 
-Claude asks a few questions, researches, and writes the page as an HTML file plus a card on the section index. Review it, check every source, and open a pull request. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide, page template and review checklist.
+Claude asks a few questions, researches, and writes the page as an HTML file in its section's folder, plus a card on the section index. Review it, check every source, and open a pull request. See [README.md](README.md) for the full guide, page template and review checklist.
 
 The skills are MIT licensed and are plain Markdown, so other Agent Skills–compatible tools can use them too.

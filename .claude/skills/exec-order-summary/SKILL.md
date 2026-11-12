@@ -38,11 +38,11 @@ Run separate searches for:
 - Do not add a personal verdict on whether the order is good or bad.
 
 ### 6. Write the article
-A Can't Think page, ready to submit as a pull request. Read `CONTRIBUTING.md` at the repository root first, then build the page from `templates/article-template.html`.
+A Can't Think page, ready to submit as a pull request. Read `README.md` at the repository root first, then build the page from `templates/article-template.html`.
 
-- Section: **Current US Legislation That's Disturbing** (`/disturbing-legislation`). File: a short kebab-case `.html` file at the site root, e.g. `eo-14321-disabilities-mental-health.html`.
+- Section: **Current US Legislation That's Disturbing** (`/disturbing-legislation`). File: a short kebab-case `.html` file in the `disturbing-legislation/` folder, e.g. `disturbing-legislation/eo-14321-disabilities-mental-health.html`.
 - Hero eyebrow: `Current US Legislation &middot; [date]`. Byline: `Authors: [contributor's name] (Human) and Claude (AI)`; ask the contributor for their name.
-- Also add a card for the new page to `disturbing-legislation.html`, copying the markup of an existing `entry-card` there.
+- Also add a card for the new page to `disturbing-legislation/index.html`, copying the markup of an existing `entry-card` there.
 - Map the structure below onto the site's components: TL;DR → `.tldr` box; use the ember TL;DR colors noted in the template, with the bullets as a `ul` inside `.tldr`; supporters' arguments → one `.issue` per argument; "What the order is" and "Limits" lists → `ul.prose`; the not-legal-advice line → `p.disclaimer`; comparisons → `.table-wrap` tables; sources → `.sources-list`.
 - Use HTML entities for typographic characters (&rsquo; &ldquo; &rdquo; &mdash; &middot;) like existing pages. Open every external link with `target="_blank" rel="noopener"`.
 

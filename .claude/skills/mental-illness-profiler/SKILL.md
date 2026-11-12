@@ -43,11 +43,11 @@ Ask these in one message if the user hasn't already answered them. Make sensible
 
 ## Output
 
-A Can't Think page, ready to submit as a pull request. Read `CONTRIBUTING.md` at the repository root first, then build the page from `templates/article-template.html`.
+A Can't Think page, ready to submit as a pull request. Read `README.md` at the repository root first, then build the page from `templates/article-template.html`.
 
-- Section: **Learn to Love** (`/learn-to-love`). File: a short kebab-case `.html` file at the site root, e.g. `when-your-loved-one-shuts-down.html`.
+- Section: **Learn to Love** (`/learn-to-love`). File: a short kebab-case `.html` file in the `learn-to-love/` folder, e.g. `learn-to-love/when-your-loved-one-shuts-down.html`.
 - Hero eyebrow: `Learn to Love &middot; [date]`. Byline: `Authors: [contributor's name] (Human) and Claude (AI)`; ask the contributor for their name.
-- Also add a card for the new page to `learn-to-love.html`, copying the markup of an existing `entry-card` there.
+- Also add a card for the new page to `learn-to-love/index.html`, copying the markup of an existing `entry-card` there.
 - Map the structure below onto the site's components: TL;DR → `.tldr` box; "The short version" → `ul.prose` with bold labels; "When to get help" → `.table-wrap.urgent`; the closing not-medical-advice line → `p.disclaimer`; comparisons → `.table-wrap` tables; sources → `.sources-list`.
 - Use HTML entities for typographic characters (&rsquo; &ldquo; &rdquo; &mdash; &middot;) like existing pages. Open every external link with `target="_blank" rel="noopener"`.
 

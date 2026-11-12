@@ -21,11 +21,11 @@ Use when the user asks for a fact sheet, one-pager, profile or public record on 
 
 ## Output
 
-A Can't Think page, ready to submit as a pull request. Read `CONTRIBUTING.md` at the repository root first, then build the page from `templates/article-template.html`.
+A Can't Think page, ready to submit as a pull request. Read `README.md` at the repository root first, then build the page from `templates/article-template.html`.
 
-- Section: **Texas Candidate Fact Sheets (or the section the maintainer names for other races)** (`/texas-candidates-2026`). File: a short kebab-case `.html` file at the site root, e.g. `paxton-fact-sheet.html` (`[lastname]-fact-sheet.html`).
+- Section: **Texas Candidate Fact Sheets (or the section the maintainer names for other races)** (`/texas-candidates-2026`). File: a short kebab-case `.html` file in the `texas-candidates-2026/` folder, e.g. `texas-candidates-2026/paxton-fact-sheet.html` (`[lastname]-fact-sheet.html`).
 - Hero eyebrow: `Public Record Fact Sheet &middot; Updated [date]`. Byline: `Authors: [contributor's name] (Human) and Claude (AI)`; ask the contributor for their name.
-- Also add a card for the new page to `texas-candidates-2026.html`, copying the markup of an existing `candidate-card` there.
+- Also add a card for the new page to `texas-candidates-2026/index.html`, copying the markup of an existing `candidate-card` there.
 - Map the structure below onto the site's components: TL;DR → `.tldr` box; "At a glance" table → `.glance-grid` of `.glance-item` (`.label` / `.value`); party → a `.pill` (`pill r` for Republican); "In their own words" → one `.issue` per topic; ethics items → `.issue` with a `.response-box` for their response; arrests and event sequences → `.timeline`; attendance gaps → `.open-q`; comparisons → `.table-wrap` tables; sources → `.sources-list`.
 - Use HTML entities for typographic characters (&rsquo; &ldquo; &rdquo; &mdash; &middot;) like existing pages. Open every external link with `target="_blank" rel="noopener"`.
 

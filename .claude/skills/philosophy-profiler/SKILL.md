@@ -10,11 +10,11 @@ Use this when the user wants an article explaining what a word, ideology or phil
 
 ## Output
 
-A Can't Think page, ready to submit as a pull request. Read `CONTRIBUTING.md` at the repository root first, then build the page from `templates/article-template.html`.
+A Can't Think page, ready to submit as a pull request. Read `README.md` at the repository root first, then build the page from `templates/article-template.html`.
 
-- Section: **Words & Society** (`/words-and-society`). File: a short kebab-case `.html` file at the site root, e.g. `what-does-liberal-mean.html`.
+- Section: **Words & Society** (`/words-and-society`). File: a short kebab-case `.html` file in the `words-and-society/` folder, e.g. `words-and-society/what-does-liberal-mean.html`.
 - Hero eyebrow: `Words &amp; Society &middot; [date]`. Byline: `Authors: [contributor's name] (Human) and Claude (AI)`; ask the contributor for their name.
-- Also add a card for the new page to `words-and-society.html`, copying the markup of an existing `entry-card` (kicker `Etymology &middot; [date]`) there.
+- Also add a card for the new page to `words-and-society/index.html`, copying the markup of an existing `entry-card` (kicker `Etymology &middot; [date]`) there.
 - Map the structure below onto the site's components: TL;DR → `.tldr` box; "The short version" eras → `.timeline` / `.tl-item` with the era in `.tl-date`; perspectives → one `.issue` block per group with the group in `.topic`; historians' asides → `.note-box`; comparisons → `.table-wrap` tables; sources → `.sources-list`.
 - Use HTML entities for typographic characters (&rsquo; &ldquo; &rdquo; &mdash; &middot;) like existing pages. Open every external link with `target="_blank" rel="noopener"`.
 

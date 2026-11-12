@@ -3,7 +3,7 @@
 <!-- Article title and one sentence on what it covers. -->
 
 **Section:** <!-- Learn to Love / Candidate Fact Sheets / Words & Society / Current US Legislation / Humanity -->
-**New file(s):** <!-- e.g. what-does-socialism-mean.html, plus the card on words-and-society.html -->
+**New file(s):** <!-- e.g. words-and-society/what-does-socialism-mean.html, plus the card on words-and-society/index.html -->
 
 ## How it was written
 

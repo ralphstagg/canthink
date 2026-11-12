@@ -5,3 +5,89 @@
   from = "/"
   to = "/index.html"
   status = 200
+
+# Section pages moved into folders. Keep old flat URLs working.
+[[redirects]]
+  from = "/learn-to-love"
+  to = "/learn-to-love/"
+  status = 301
+[[redirects]]
+  from = "/a-path-to-understand-and-heal"
+  to = "/learn-to-love/a-path-to-understand-and-heal"
+  status = 301
+[[redirects]]
+  from = "/when-your-loved-one-shuts-down"
+  to = "/learn-to-love/when-your-loved-one-shuts-down"
+  status = 301
+[[redirects]]
+  from = "/when-your-loved-ones-trauma-affects-you-too"
+  to = "/learn-to-love/when-your-loved-ones-trauma-affects-you-too"
+  status = 301
+[[redirects]]
+  from = "/when-you-dont-approve-of-their-partner"
+  to = "/learn-to-love/when-you-dont-approve-of-their-partner"
+  status = 301
+
+[[redirects]]
+  from = "/texas-candidates-2026"
+  to = "/texas-candidates-2026/"
+  status = 301
+[[redirects]]
+  from = "/paxton-fact-sheet"
+  to = "/texas-candidates-2026/paxton-fact-sheet"
+  status = 301
+[[redirects]]
+  from = "/talarico-fact-sheet"
+  to = "/texas-candidates-2026/talarico-fact-sheet"
+  status = 301
+[[redirects]]
+  from = "/abbott-fact-sheet"
+  to = "/texas-candidates-2026/abbott-fact-sheet"
+  status = 301
+[[redirects]]
+  from = "/hinojosa-fact-sheet"
+  to = "/texas-candidates-2026/hinojosa-fact-sheet"
+  status = 301
+
+[[redirects]]
+  from = "/words-and-society"
+  to = "/words-and-society/"
+  status = 301
+[[redirects]]
+  from = "/what-does-liberal-mean"
+  to = "/words-and-society/what-does-liberal-mean"
+  status = 301
+[[redirects]]
+  from = "/narcissist-from-greek-myth-to-modern-insult"
+  to = "/words-and-society/narcissist-from-greek-myth-to-modern-insult"
+  status = 301
+[[redirects]]
+  from = "/woke-stay-awake-to-culture-war-weapon"
+  to = "/words-and-society/woke-stay-awake-to-culture-war-weapon"
+  status = 301
+
+[[redirects]]
+  from = "/disturbing-legislation"
+  to = "/disturbing-legislation/"
+  status = 301
+[[redirects]]
+  from = "/eo-14321-disabilities-mental-health"
+  to = "/disturbing-legislation/eo-14321-disabilities-mental-health"
+  status = 301
+[[redirects]]
+  from = "/christs-teachings-and-the-administrations-record"
+  to = "/disturbing-legislation/christs-teachings-and-the-administrations-record"
+  status = 301
+
+[[redirects]]
+  from = "/humanity-and-the-problems-it-faces"
+  to = "/humanity-and-the-problems-it-faces/"
+  status = 301
+[[redirects]]
+  from = "/us-violent-crime-2004-present"
+  to = "/humanity-and-the-problems-it-faces/us-violent-crime-2004-present"
+  status = 301
+[[redirects]]
+  from = "/feeling-everything-in-a-careless-world"
+  to = "/humanity-and-the-problems-it-faces/feeling-everything-in-a-careless-world"
+  status = 301
