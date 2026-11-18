@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fibro Flare Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap" rel="stylesheet">
+<style id="app-style">
+/* Layout: one calm column of cards; a sticky jump bar; the flare checklist first, the plan second, the log last. */
+:root{
+  --bg:#f3f1f5;
+  --surface:#ffffff;
+  --ink:#2a2233;
+  --muted:#6b6175;
+  --line:#ddd6e3;
+  --accent:#2f6f6a;
+  --accent-soft:#e1efed;
+  --flare:#b4534a;
+  --flare-soft:#f7e6e3;
+  --done:#8b8294;
+  --font-display:"Literata", Georgia, "Times New Roman", serif;
+  --font-body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1b1720; --surface:#251f2c; --ink:#ece6f1; --muted:#b0a6ba; --line:#3a3242;
+    --accent:#6cc0b7; --accent-soft:#1f3634; --flare:#e98a80; --flare-soft:#3b2422; --done:#8c8296;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1b1720; --surface:#251f2c; --ink:#ece6f1; --muted:#b0a6ba; --line:#3a3242;
+  --accent:#6cc0b7; --accent-soft:#1f3634; --flare:#e98a80; --flare-soft:#3b2422; --done:#8c8296;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55}
+.wrap{max-width:860px;margin:0 auto;padding:24px 16px 64px;display:grid;gap:20px}
+header.top{display:grid;gap:8px;padding-top:8px}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:2.1rem;font-weight:700}
+h2{font-size:1.45rem;font-weight:700}
+h3{font-size:1.08rem;font-weight:700;font-family:var(--font-body)}
+p{margin:0}
+.lede{color:var(--muted);max-width:62ch}
+.status{font-size:.9rem;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--done);display:inline-block}
+.dot.ok{background:var(--accent)}
+.dot.busy{background:var(--flare)}
+nav.jump{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+nav.jump a{color:var(--ink);text-decoration:none;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:.92rem}
+nav.jump a:hover,nav.jump a:focus-visible{border-color:var(--accent);outline:none}
+section.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:16px}
+.card-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.hint{font-size:.92rem;color:var(--muted)}
+/* spoons */
+.spoons{display:flex;gap:6px;flex-wrap:wrap}
+.spoon{width:34px;height:44px;border:1px solid var(--line);border-radius:8px;background:var(--bg);cursor:pointer;display:grid;place-items:center;padding:0;color:var(--muted)}
+.spoon svg{width:16px;height:30px}
+.spoon.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.spoon:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.spoon-read{font-variant-numeric:tabular-nums;font-weight:700}
+/* checklist */
+.progress{height:8px;border-radius:999px;background:var(--bg);border:1px solid var(--line);overflow:hidden}
+.progress span{display:block;height:100%;background:var(--accent);width:0}
+.group{display:grid;gap:6px}
+.group h3{margin-bottom:2px}
+.check{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;padding:8px 10px;border-radius:8px}
+.check:hover{background:var(--bg)}
+.check input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+.check input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.check.is-done label .t{color:var(--done);text-decoration:line-through}
+.check .why{display:block;font-size:.88rem;color:var(--muted)}
+.alert{border-left:4px solid var(--flare);background:var(--flare-soft);border-radius:8px;padding:14px 16px;display:grid;gap:6px}
+.alert ul{margin:0;padding-left:20px}
+/* forms */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:640px){.grid2{grid-template-columns:1fr}}
+.field{display:grid;gap:4px}
+.field label{font-weight:700;font-size:.95rem}
+.field .hint{font-weight:400}
+textarea,input[type=text],input[type=date],select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+textarea{min-height:76px;resize:vertical}
+textarea:focus,input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.rows{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:1fr 1fr 40px;gap:8px;align-items:center}
+.logrow{display:grid;grid-template-columns:150px 90px 1fr 1fr 40px;gap:8px;align-items:center}
+.row-head{font-size:.85rem;color:var(--muted);font-weight:700}
+@media (max-width:640px){
+  .logrow{grid-template-columns:1fr 1fr 40px}
+  .logrow .wide{grid-column:1 / span 2}
+  .logrow.row-head{display:none}
+}
+button.btn{font:inherit;font-size:.95rem;border-radius:8px;padding:8px 14px;border:1px solid var(--accent);background:var(--accent);color:var(--surface);cursor:pointer}
+button.btn.ghost{background:transparent;color:var(--accent)}
+button.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+button.x{font:inherit;width:36px;height:36px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+button.x:hover{color:var(--flare);border-color:var(--flare)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+footer{font-size:.88rem;color:var(--muted);display:grid;gap:6px}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+.progress span{transition:width .3s ease}
+</style>
+</head>
+<body>
+<div id="root" class="wrap"><p>Loading the flare plan…</p></div>
+<script id="state" type="application/json">{"spoons":3,"checks":{},"plan":{"signs":"Waking up achy all over, like the flu. Snapping at small things. Forgetting words.","triggers":"Weeks of stress, a big day of cleaning or travel, cold rainy weather.","helps":"1. Love, Compassion, Communication and asking what they need as well as telling them how you are feeling\n2. Heating pad, a weighted blanket \n3. Ask if there's anything needed handled such as appointments canceled, a note to other family","dont":"Please don't suggest pushing through or ask \"are you sure it's that bad?\"","signal":"\"Low spoons\" or a text with a spoon emoji","touch":"Ask first. Hand squeezes are usually OK; hugs may hurt.","meds":"Example: take only as prescribed. Ask the pharmacist if unsure.","comfort":"Heating pad: hall closet. Eye mask and earplugs: nightstand.","foods":"Soup in the freezer, toast, yogurt, frozen meals","care":"Example: Dr. Name, clinic phone 555-0100","backup":"Example: sister (text first), neighbor for school pickup"},"tasks":[{"task":"Dinner","who":"Partner"},{"task":"School pickup","who":"Grandma"},{"task":"Dog walks","who":"Teen"}],"log":[{"date":"2026-10-03","level":"7","trigger":"Long work week + cold front","notes":"Lasted about 2 weeks. Heat and early nights helped."}],"updated":"2026-11-18T18:45:47.200Z"}</script>
+<script id="app">
+(function(){
+  "use strict";
+  var CHECKS = [
+    {group:"First hour", items:[
+      ["ask","Ask: \"How bad is it, 0 to 10, and what do you need most?\"","Then follow their lead."],
+      ["believe","Say you believe them. Skip the debate.","Disbelief makes pain and stress worse."],
+      ["plan","Open the flare plan below and check their go-to comforts.",""],
+      ["meds","Bring their usual medicine, water and an easy snack within reach.","Only what their care team has prescribed or approved."],
+      ["heat","Offer heat: a heating pad, warm bath or warm blanket.",""],
+      ["quiet","Dim the lights, lower the TV and keep strong smells away.","Noise and light can feel much louder during a flare."],
+      ["cancel","Ask whether to cancel or move today's plans, and handle the calls.",""]
+    ]},
+    {group:"Take things off their plate", items:[
+      ["meals","Cover meals with food that needs little or no cooking.",""],
+      ["kids","Cover kids, pets and pickups. Use the task list in the plan.",""],
+      ["chores","Do the dishes, laundry and errands without being asked to direct.",""],
+      ["msgs","Offer to message work, school or friends, if they want that.",""]
+    ]},
+    {group:"Comfort and connection", items:[
+      ["touch","Ask before touching. A hand squeeze may be fine when a hug hurts.",""],
+      ["clothes","Bring soft, loose clothes and extra pillows for support.",""],
+      ["company","Offer quiet company: sitting nearby without needing to talk.",""],
+      ["texts","Check in by text every few hours so they can answer when able.",""]
+    ]},
+    {group:"Each day of the flare", items:[
+      ["sleep","Protect a steady bedtime and a calm wind-down.","Poor sleep and next-day pain feed each other."],
+      ["gentle","Offer gentle stretching or a short walk only if they want it.",""],
+      ["log","Add a line to the flare log: date, how bad, possible triggers.",""],
+      ["watch","Watch for warning signs that aren't their usual flare (see the red box).",""]
+    ]},
+    {group:"As it lifts", items:[
+      ["ramp","Help them ease back in slowly. A good day isn't a catch-up day.","Doing too much too soon can restart the boom-and-bust cycle."],
+      ["debrief","At a calm time, talk about what helped and update the plan.",""],
+      ["you","Take a break for yourself. Ask someone else to cover a shift.",""]
+    ]}
+  ];
+  var PLAN_FIELDS = [
+    ["signs","Early warning signs","What tells them (or you) a flare is starting?"],
+    ["triggers","Known triggers","Stress, overdoing it, weather, poor sleep, illness…"],
+    ["helps","What helps most","Their top three comforts, in order."],
+    ["dont","Please don't","Words or actions that make things worse."],
+    ["signal","How they'll tell you","A code word or text that means \"I'm flaring.\""],
+    ["touch","Touch preferences","What's OK and what hurts during a flare."],
+    ["meds","Medicines, as prescribed","Names and instructions from their prescriptions only."],
+    ["comfort","Comfort items and where they are","Heating pad, eye mask, earplugs, favorite blanket."],
+    ["foods","Easy foods to keep on hand","Things that need little or no cooking."],
+    ["care","Care team contacts","Doctor or clinic name and phone, pharmacy."],
+    ["backup","Backup helpers","Who else can step in, and for what."]
+  ];
+
+  var state;
+  try { state = JSON.parse(document.getElementById("state").textContent); } catch(e){ state = {}; }
+  state.checks = state.checks || {}; state.plan = state.plan || {}; state.tasks = state.tasks || []; state.log = state.log || [];
+  if (typeof state.spoons !== "number") state.spoons = 6;
+
+  var STORE_KEY = "fibro-flare-plan-v1";
+  var mode = "loading"; // "shared" | "local" | "readonly"
+  var artifactApi = null;
+  var downloadsApi = null;
+
+  // Local fallback: use only if the shared store is unavailable.
+  function loadLocal(){
+    try { var raw = localStorage.getItem(STORE_KEY); if (raw){ var s = JSON.parse(raw); if (s && s.checks) state = s; } } catch(e){}
+  }
+
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+
+  var spoonSvg = '<svg viewBox="0 0 16 30" aria-hidden="true"><ellipse cx="8" cy="6" rx="5.5" ry="5.5" fill="currentColor"/><rect x="6.6" y="10" width="2.8" height="19" rx="1.4" fill="currentColor"/></svg>';
+
+  function statusText(){
+    if (mode === "shared") return '<span class="dot ok"></span>Changes save for everyone who opens this page.' + (state.updated ? ' Last saved ' + esc(new Date(state.updated).toLocaleString()) + '.' : '');
+    if (mode === "readonly") return '<span class="dot"></span>View only. Ask the page owner for edit access to make changes.';
+    if (mode === "local") return '<span class="dot"></span>Changes save in this browser only.';
+    return '<span class="dot"></span>Connecting…';
+  }
+
+  function render(){
+    var total = 0, done = 0;
+    CHECKS.forEach(function(g){ g.items.forEach(function(it){ total++; if (state.checks[it[0]]) done++; }); });
+    var ro = mode === "readonly" ? " disabled" : "";
+    var h = [];
+    h.push('<header class="top"><h1>Fibro Flare Plan</h1>');
+    h.push('<p class="lede">A shared checklist for family on flare days, and a plan to fill in together on a calm day. Your loved one is the expert. Fill it in with them, not for them.</p>');
+    h.push('<p class="status" id="status" role="status">' + statusText() + '</p>');
+    h.push('<div class="actions" id="print-actions"><button type="button" class="btn" id="print-copy"' + (downloadsApi ? '' : ' hidden') + '>Download a printable copy</button><span class="hint" id="print-hint">' + (downloadsApi ? 'Saves a print-ready page with the checklist and your plan. Open it and the print dialog appears.' : 'To print, open the family guide, then use Export \u2192 PDF from the doc\u2019s name.') + '</span></div></header>');
+    h.push('<nav class="jump" aria-label="Sections"><a href="#spoons">Spoons today</a><a href="#checklist">Flare checklist</a><a href="#plan">Our flare plan</a><a href="#log">Flare log</a><a href="#help">Get help</a><a href="#print-actions">Print</a></nav>');
+
+    // Spoons
+    h.push('<section class="card" id="spoons"><div class="card-head"><h2>Spoons today</h2><p class="hint">Tap to set how much energy they have. <span class="spoon-read">' + state.spoons + ' of 12</span></p></div>');
+    h.push('<div class="spoons" role="group" aria-label="Spoons today, out of 12">');
+    for (var i=1;i<=12;i++){ h.push('<button type="button" class="spoon' + (i<=state.spoons?' on':'') + '" data-spoon="' + i + '" aria-label="' + i + ' spoon' + (i>1?'s':'') + '" aria-pressed="' + (i===state.spoons) + '"' + ro + '>' + spoonSvg + '</button>'); }
+    h.push('</div><p class="hint">Under 6 is a low day: cover the costly tasks and keep plans small.</p></section>');
+
+    // Checklist
+    h.push('<section class="card" id="checklist"><div class="card-head"><h2>Flare checklist</h2><p class="hint"><span class="spoon-read">' + done + ' of ' + total + '</span> done</p></div>');
+    h.push('<div class="progress" aria-hidden="true"><span style="width:' + (total? Math.round(done/total*100):0) + '%"></span></div>');
+    CHECKS.forEach(function(g){
+      h.push('<div class="group"><h3>' + esc(g.group) + '</h3>');
+      g.items.forEach(function(it){
+        var on = !!state.checks[it[0]];
+        h.push('<div class="check' + (on?' is-done':'') + '"><input type="checkbox" id="c-' + it[0] + '" data-check="' + it[0] + '"' + (on?' checked':'') + ro + '><label for="c-' + it[0] + '"><span class="t">' + esc(it[1]) + '</span>' + (it[2]?'<span class="why">' + esc(it[2]) + '</span>':'') + '</label></div>');
+      });
+      h.push('</div>');
+    });
+    h.push('<div class="actions"><button type="button" class="btn ghost" id="clear-checks"' + ro + '>Clear ticks for the next flare</button></div>');
+    h.push('<div class="alert" role="note"><h3>Not a usual flare? Get help.</h3><ul><li>Call 911 for chest pain, trouble breathing, sudden weakness, a drooping face or trouble speaking.</li><li>Call or text 988 if they talk about suicide or not wanting to live, or if you&#39;re struggling yourself.</li><li>Call their doctor soon for fever, new joint swelling, a rash, unexplained weight loss, new numbness or weakness, or pain that is different from their usual flares.</li></ul></div>');
+    h.push('</section>');
+
+    // Plan
+    h.push('<section class="card" id="plan"><div class="card-head"><h2>Our flare plan</h2><p class="hint">Fill in together on a calm day. The examples are placeholders to replace.</p></div><div class="grid2">');
+    PLAN_FIELDS.forEach(function(f){
+      h.push('<div class="field"><label for="p-' + f[0] + '">' + esc(f[1]) + ' <span class="hint">' + esc(f[2]) + '</span></label><textarea id="p-' + f[0] + '" data-plan="' + f[0] + '"' + ro + '>' + esc(state.plan[f[0]] || "") + '</textarea></div>');
+    });
+    h.push('</div><div class="field"><h3>Who covers what</h3><div class="rows" id="tasks"><div class="row row-head"><span>Task</span><span>Who covers it</span><span></span></div>');
+    state.tasks.forEach(function(t, idx){
+      h.push('<div class="row"><input type="text" aria-label="Task ' + (idx+1) + '" id="t-task-' + idx + '" data-task="' + idx + '" data-k="task" value="' + esc(t.task) + '"' + ro + '><input type="text" aria-label="Who covers task ' + (idx+1) + '" id="t-who-' + idx + '" data-task="' + idx + '" data-k="who" value="' + esc(t.who) + '"' + ro + '><button type="button" class="x" data-del-task="' + idx + '" aria-label="Remove task ' + (idx+1) + '"' + ro + '>×</button></div>');
+    });
+    h.push('</div><div class="actions"><button type="button" class="btn ghost" id="add-task"' + ro + '>Add a task</button></div></div></section>');
+
+    // Log
+    h.push('<section class="card" id="log"><div class="card-head"><h2>Flare log</h2><p class="hint">Patterns show up over months. Newest first.</p></div><div class="rows">');
+    h.push('<div class="logrow row-head"><span>Started</span><span>How bad (0–10)</span><span>Possible triggers</span><span>What helped</span><span></span></div>');
+    state.log.forEach(function(r, idx){
+      h.push('<div class="logrow"><input type="date" aria-label="Flare ' + (idx+1) + ' start date" id="l-date-' + idx + '" data-log="' + idx + '" data-k="date" value="' + esc(r.date) + '"' + ro + '>');
+      h.push('<select aria-label="Flare ' + (idx+1) + ' severity" id="l-level-' + idx + '" data-log="' + idx + '" data-k="level"' + ro + '><option value="">–</option>');
+      for (var n=0;n<=10;n++){ h.push('<option' + (String(r.level)===String(n)?' selected':'') + '>' + n + '</option>'); }
+      h.push('</select><input type="text" class="wide" aria-label="Flare ' + (idx+1) + ' possible triggers" id="l-trig-' + idx + '" data-log="' + idx + '" data-k="trigger" value="' + esc(r.trigger) + '"' + ro + '>');
+      h.push('<input type="text" class="wide" aria-label="Flare ' + (idx+1) + ' what helped" id="l-notes-' + idx + '" data-log="' + idx + '" data-k="notes" value="' + esc(r.notes) + '"' + ro + '>');
+      h.push('<button type="button" class="x" data-del-log="' + idx + '" aria-label="Remove flare ' + (idx+1) + '"' + ro + '>×</button></div>');
+    });
+    h.push('</div><div class="actions"><button type="button" class="btn" id="add-log"' + ro + '>Log a new flare</button></div></section>');
+
+    // Help + footer
+    h.push('<section class="card" id="help"><h2>Get help</h2><p>In the U.S., call <strong>911</strong> in an emergency. Call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline) any time, for them or for you. For anything new, different or worsening, contact their doctor.</p></section>');
+    h.push('<footer><p>Companion to <a href="a-family-guide-to-fibromyalgia.html">When Your Loved One Lives With Fibromyalgia: A Family Guide</a>.</p><p>General information, not medical advice. Use only medicines as prescribed.</p></footer>');
+
+    document.getElementById("root").innerHTML = h.join("");
+  }
+
+  function buildPrintable(){
+    var p = [];
+    p.push('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Fibro Flare Checklist</title><style>');
+    p.push('body{font-family:"Atkinson Hyperlegible",Arial,sans-serif;color:#111;margin:24px;font-size:12.5pt;line-height:1.4}h1{font-size:20pt;margin:0 0 4px}h2{font-size:14pt;margin:18px 0 6px;border-bottom:1px solid #999;padding-bottom:2px}h3{font-size:12pt;margin:10px 0 4px}');
+    p.push('ul.cl{list-style:none;padding:0;margin:0}ul.cl li{padding:3px 0 3px 26px;position:relative}ul.cl li:before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border:1.5px solid #111;border-radius:2px}.why{color:#444;font-size:10.5pt}');
+    p.push('.box{border:2px solid #111;padding:8px 12px;margin:12px 0}table{border-collapse:collapse;width:100%}td,th{border:1px solid #777;padding:5px 7px;text-align:left;vertical-align:top}th{background:#eee}.cols{columns:2;column-gap:28px}.grp{break-inside:avoid}.field{break-inside:avoid;margin:0 0 8px}.field b{display:block}.val{white-space:pre-wrap}.blank{border-bottom:1px solid #777;height:20px}');
+    p.push('@media print{body{margin:0}.noprint{display:none}h2{break-after:avoid}}@page{margin:14mm}</style></head><body>');
+    p.push('<p class="noprint" style="background:#eef;padding:8px">If the print window doesn’t open, press Ctrl+P (Windows) or Cmd+P (Mac).</p>');
+    p.push('<h1>Fibro Flare Checklist</h1><p>Spoons today: ______ of 12 &nbsp;&nbsp; Flare started: ____________ &nbsp;&nbsp; How bad (0–10): ______</p>');
+    p.push('<div class="cols">');
+    CHECKS.forEach(function(g){
+      p.push('<div class="grp"><h3>' + esc(g.group) + '</h3><ul class="cl">');
+      g.items.forEach(function(it){ p.push('<li>' + esc(it[1]) + (it[2] ? ' <span class="why">' + esc(it[2]) + '</span>' : '') + '</li>'); });
+      p.push('</ul></div>');
+    });
+    p.push('</div><div class="box"><b>Not a usual flare? Get help.</b><br>Call 911 for chest pain, trouble breathing, sudden weakness, a drooping face or trouble speaking. Call or text 988 if they talk about suicide or not wanting to live. Call their doctor soon for fever, new joint swelling, a rash, unexplained weight loss, new numbness or weakness, or pain unlike their usual flares.</div>');
+    p.push('<h2>Our flare plan</h2>');
+    PLAN_FIELDS.forEach(function(f){ var v = state.plan[f[0]]; p.push('<div class="field"><b>' + esc(f[1]) + '</b>' + (v ? '<div class="val">' + esc(v) + '</div>' : '<div class="blank"></div><div class="blank"></div>') + '</div>'); });
+    p.push('<h2>Who covers what</h2><table><tr><th>Task</th><th>Who covers it</th></tr>');
+    state.tasks.forEach(function(t){ p.push('<tr><td>' + esc(t.task) + '</td><td>' + esc(t.who) + '</td></tr>'); });
+    for (var i=0;i<3;i++) p.push('<tr><td>&nbsp;</td><td>&nbsp;</td></tr>');
+    p.push('</table><h2>Flare log</h2><table><tr><th style="width:16%">Started</th><th style="width:12%">How bad</th><th>Possible triggers</th><th>What helped</th></tr>');
+    state.log.forEach(function(r){ p.push('<tr><td>' + esc(r.date) + '</td><td>' + esc(r.level) + '</td><td>' + esc(r.trigger) + '</td><td>' + esc(r.notes) + '</td></tr>'); });
+    for (var j=0;j<4;j++) p.push('<tr><td>&nbsp;</td><td></td><td></td><td></td></tr>');
+    p.push('</table><p class="why" style="margin-top:12px">General information, not medical advice. Use only medicines as prescribed. Printed ' + esc(new Date().toLocaleDateString()) + '.</p>');
+    p.push('<scr' + 'ipt>window.addEventListener("load",function(){setTimeout(function(){try{window.print()}catch(e){}},300)});</scr' + 'ipt></body></html>');
+    return p.join("");
+  }
+
+  // Build a complete document from the current state (never from the live DOM).
+  function buildDoc(){
+    var css = document.getElementById("app-style").textContent;
+    var js = document.getElementById("app").textContent;
+    var json = JSON.stringify(state).replace(/</g, "\\u003c");
+    return '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>Fibro Flare Plan</title>\n' +
+      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
+      '<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap" rel="stylesheet">\n' +
+      '<style id="app-style">' + css + '</style>\n</head>\n<body>\n<div id="root" class="wrap"><p>Loading the flare plan…</p></div>\n' +
+      '<script id="state" type="application/json">' + json + '</scr' + 'ipt>\n<script id="app">' + js + '</scr' + 'ipt>\n</body>\n</html>\n';
+  }
+
+  var timer = null;
+  function setStatus(html){ var el = document.getElementById("status"); if (el) el.innerHTML = html; }
+  function save(delay){
+    if (mode === "readonly") return;
+    if (mode === "local" || mode === "loading"){
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch(e){}
+      return;
+    }
+    clearTimeout(timer);
+    setStatus('<span class="dot busy"></span>Saving…');
+    timer = setTimeout(function(){
+      state.updated = new Date().toISOString();
+      artifactApi.publish(buildDoc()).then(function(){ /* every view reloads to the new version */ }).catch(function(err){
+        var code = (err && (err.code || err.name)) || "";
+        if (code === "not_granted" || code === "not_writer"){ mode = "readonly"; render(); }
+        else if (code === "conflict"){ setStatus('<span class="dot"></span>Someone else saved at the same time. The page will reload with their version.'); }
+        else { setStatus('<span class="dot busy"></span>Couldn\'t save just now. Try again in a moment.'); }
+      });
+    }, delay == null ? 1500 : delay);
+  }
+
+  var root = document.getElementById("root");
+  root.addEventListener("click", function(e){
+    var t = e.target.closest("button, input");
+    if (!t || t.disabled) return;
+    if (t.id === "print-copy"){
+      if (!downloadsApi) return;
+      var hint = document.getElementById("print-hint");
+      downloadsApi.save({filename:"fibro-flare-checklist.html", data:buildPrintable()}).then(function(){
+        if (hint) hint.textContent = "Saved. Open fibro-flare-checklist.html and the print dialog will appear.";
+      }).catch(function(err){
+        var c = err && err.code;
+        if (hint) hint.textContent = c === "declined" ? "Download cancelled." : (c === "rate_limited" ? "A download prompt is already open. Try again in a moment." : "Couldn\u2019t download here. Use Export \u2192 PDF in the family guide instead.");
+      });
+      return;
+    }
+    if (t.dataset.spoon){ state.spoons = parseInt(t.dataset.spoon, 10); render(); save(); return; }
+    if (t.id === "clear-checks"){ state.checks = {}; render(); save(400); return; }
+    if (t.id === "add-task"){ state.tasks.push({task:"", who:""}); render(); var el = document.getElementById("t-task-" + (state.tasks.length-1)); if (el) el.focus(); return; }
+    if (t.dataset.delTask != null){ state.tasks.splice(+t.dataset.delTask, 1); render(); save(); return; }
+    if (t.id === "add-log"){ state.log.unshift({date:new Date().toISOString().slice(0,10), level:"", trigger:"", notes:""}); render(); var d = document.getElementById("l-level-0"); if (d) d.focus(); save(3000); return; }
+    if (t.dataset.delLog != null){ state.log.splice(+t.dataset.delLog, 1); render(); save(); return; }
+  });
+  root.addEventListener("change", function(e){
+    var t = e.target;
+    if (t.dataset.check){ state.checks[t.dataset.check] = t.checked; t.closest(".check").classList.toggle("is-done", t.checked); updateProgress(); save(2500); return; }
+    if (t.dataset.plan){ state.plan[t.dataset.plan] = t.value; save(); return; }
+    if (t.dataset.task != null){ state.tasks[+t.dataset.task][t.dataset.k] = t.value; save(); return; }
+    if (t.dataset.log != null){ state.log[+t.dataset.log][t.dataset.k] = t.value; save(); return; }
+  });
+  function updateProgress(){
+    var total=0, done=0; CHECKS.forEach(function(g){ g.items.forEach(function(it){ total++; if (state.checks[it[0]]) done++; }); });
+    var bar = root.querySelector(".progress span"); if (bar) bar.style.width = Math.round(done/total*100) + "%";
+    var read = root.querySelector("#checklist .card-head .spoon-read"); if (read) read.textContent = done + " of " + total;
+  }
+
+  render();
+
+  // Light up shared saving when the page runs as a published artifact.
+  function goLocal(){ mode = "local"; loadLocal(); render(); }
+  function init(tries){
+    var c = window.claude;
+    if (!c || typeof c.use !== "function"){
+      if (tries < 30) { setTimeout(function(){ init(tries + 1); }, 100); } else { goLocal(); }
+      return;
+    }
+    Promise.resolve(c.use("artifact")).then(function(api){
+      if (api && typeof api.publish === "function"){ artifactApi = api; mode = "shared"; render(); }
+      else { goLocal(); }
+    }).catch(goLocal);
+  }
+  init(0);
+  function initDownloads(tries){
+    var c = window.claude;
+    if (!c || typeof c.use !== "function"){ if (tries < 30) setTimeout(function(){ initDownloads(tries + 1); }, 100); return; }
+    Promise.resolve(c.use("downloads")).then(function(api){ if (api && typeof api.save === "function"){ downloadsApi = api; render(); } }).catch(function(){});
+  }
+  initDownloads(0);
+})();
+</script>
+</body>
+</html>
